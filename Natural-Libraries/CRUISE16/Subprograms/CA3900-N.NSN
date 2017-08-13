@@ -1,0 +1,17 @@
+* >Natural Source Header 000000
+* :Mode S
+* :CP
+* <Natural Source Header
+/** New Subprogram CA3900-N.
+/**
+/** :author sagadmin
+/* TODO Enter your code here
+DEFINE DATA LOCAL 
+  USING NCDATA-L
+END-DEFINE
+ON ERROR
+  ESCAPE ROUTINE
+END-ERROR
+READ (1) NCCUSTOMER
+END-READ
+END

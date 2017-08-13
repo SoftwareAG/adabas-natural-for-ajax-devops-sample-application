@@ -1,0 +1,30 @@
+* >Natural Source Header 000000
+* :Mode S
+* :CP ISO_8859-1:1987
+* :LineIncrement 10
+* <Natural Source Header
+DEFINE DATA LOCAL
+*
+LOCAL USING NCDATA-L
+LOCAL 
+1 DELNAME (N8.0)
+END-DEFINE
+
+ON ERROR
+  DISPLAY 'Error:' *ERROR *ERROR-NR 
+  ESCAPE ROUTINE
+END-ERROR
+
+INPUT 'isn to delete' DELNAME
+
+READ (1) NCCUSTOMER WITH ISN = DELNAME ENDING AT DELNAME
+
+  DELETE
+  END TRANSACTION
+
+  AT END OF DATA                                                        
+    WRITE NOTITLE 'RECORD DELETED'                             
+  END-ENDDATA                                                           
+END-READ
+*
+END

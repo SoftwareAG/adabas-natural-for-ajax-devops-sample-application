@@ -1,0 +1,18 @@
+DEFINE DATA PARAMETER
+/* >Natural Source Header 000000
+/* :Mode S
+/* :CP
+/* <Natural Source Header
+/** New Parameter Data Area CONTPDA.
+/**
+/** :author Training
+/* TODO Enter your data definitions here
+/*( imported data fields from Data Definition Module NCCONTRA
+1 CONTRACT
+2 CONTRACT-ID (P6.0)
+2 PRICE (P10.3)
+2 DATE-BOOKING (N8.0)
+2 ID-CUSTOMER (N8.0)
+2 ID-CRUISE (N8.0)
+/*) imported data fields from Data Definition Module NCCONTRA
+END-DEFINE

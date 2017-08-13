@@ -1,0 +1,87 @@
+DEFINE DATA LOCAL
+/* >Natural Source Header 000000
+/* :Mode S
+/* :CP
+/* <Natural Source Header
+/** New Local Data Area NCDATA-L.
+/**
+/** :author sagadmin
+/* TODO Enter your data definitions here
+/*( imported data fields from Data Definition Module NCCONTRA
+1 NCCONTRACT VIEW OF NCCONTRACT
+  2 CONTRACT-ID (P6.0)
+  2 PRICE (P10.3)
+  2 DID-CONDITIONS (A8)
+  2 DATE-CANCELLATION(N8.0)
+  2 DATE-RESERVATION (N8.0)
+  2 DATE-BOOKING (N8.0) 
+  2 ID-CUSTOMER (N8.0)
+  2 ID-CRUISE (N8.0)
+/*) imported data fields from Data Definition Module NCCONTRA
+/*( imported data fields from Data Definition Module NCCRUISE
+1 NCCRUISE VIEW OF NCCRUISE
+  2 CRUISE-ID (N8.0)
+  2 CRUISE-STATUS (A1)
+  2 CRUISE-START
+    3 START-DATE (N8.0)
+  2 CRUISE-END
+    3 END-DATE (N8.0)
+  2 START-HARBOR (A20)
+  2 DESTINATION-HARBOR (A20)
+  2 ID-YACHT (N8.0)
+  2 PRICES
+    3 PRICE-1W (P10.3)
+    3 PRICE-2W (P10.3)
+    3 PRICE-3W (P10.3)
+ 
+/*) imported data fields from Data Definition Module NCCRUISE
+/*( imported data fields from Data Definition Module NCCUSTOM
+1 NCCUSTOMER VIEW OF NCCUSTOMER
+  2 PERSON-ID (N8.0)
+  2 BIRTH-DATE (N8.0)
+  2 SEX (A1)
+  2 NAME
+    3 SURNAME (A20)
+    3 FIRST-NAME-OLD (A20)
+  2 ADDRESS
+    3 EMAIL (A20/1:5)
+    3 STREET-NUMBER (A20)
+    3 COUNTRY (A3)
+    3 ZIP-CODE (A10)
+    3 CITY (A20)
+  2 PHONE (1:99)
+    3 AREA-CODE (A6)
+    3 PHONE-NUMBER (A15)
+  2 TIMESTAMP (B8)
+*  2 FIRST-NAME-1 (U40)
+/*) imported data fields from Data Definition Module NCCUSTOM
+/*( imported data fields from Data Definition Module NCYACHT
+1 NCYACHT VIEW OF NCYACHT
+  2 YACHT-ID (N8.0)
+  2 YACHT-NAME (A30)
+  2 YACHT-TYPE (A30)
+/*) imported data fields from Data Definition Module NCYACHT
+/*  exercise 11
+1 YACHT-PICTURE VIEW OF NCYACHT
+  2 YACHT-ID (N8.0)
+  2 YACHT-NAME (A30)
+  2 YACHT-TYPE (A30)
+  2 L@PICTURE (I4)
+  2 PICTURE   (A) DYNAMIC
+1 YACHT-PICTURE-UPDATE VIEW OF NCYACHT
+  2 YACHT-ID (N8.0)
+  2 YACHT-NAME (A30)
+  2 YACHT-TYPE (A30)
+ 2 PICTURE   (A) DYNAMIC  
+1 MSG-GROUP-PARA
+  2 MSG-LANG (A1)
+  2 MSG-NR (N4) INIT <0000>
+  2 MSG-TYPE (A1)
+  2 MSG-TEXT (A60)
+*
+1 V-TMPSTAMP-B  (B8)
+1 V-TMPSTAMP-P1 (P19)
+1 V-TMPSTAMP-P2 (P19)
+1 V-TMPSTAMP-PD (P10)
+1 #STUDENT (L) INIT <FALSE>
+END-DEFINE

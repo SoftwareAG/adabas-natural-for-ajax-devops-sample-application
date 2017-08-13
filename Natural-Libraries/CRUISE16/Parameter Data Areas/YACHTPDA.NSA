@@ -1,0 +1,27 @@
+DEFINE DATA PARAMETER
+/* >Natural Source Header 000000
+/* :Mode S
+/* :CP
+/* <Natural Source Header
+* ----------------------------------------------------------------------
+* Generated from NFN XML TOOLKIT
+*
+*   'YACHTPDA'
+*
+* DESCRIPTION
+*   Data structure for file:
+*   C:\Training\308-66E\Trainer\workspace\Cruise_Trainer\Natural-Libraries\CRUISE16\Resources\singleyacht.dtd
+*
+* ----------------------------------------------------------------------
+1 YACHT /* SEQ
+  2 YACHT-ID (A) DYNAMIC
+  2 YACHT-NAME (A) DYNAMIC
+  2 YACHT-TYPE (A) DYNAMIC
+  2 LENGTH (A) DYNAMIC
+  2 WIDTH (A) DYNAMIC
+  2 DRAFT (A) DYNAMIC
+  2 SAIL-SURFACE (A) DYNAMIC
+  2 MOTOR (A) DYNAMIC
+  2 HEAD-ROOM (A) DYNAMIC
+  2 BUNKS (A) DYNAMIC
+END-DEFINE

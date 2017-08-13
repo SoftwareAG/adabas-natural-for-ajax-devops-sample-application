@@ -1,0 +1,21 @@
+* >Natural Source Header 000000
+* :Mode S
+* :CP
+* <Natural Source Header
+/** New Copycode ERRLOG-I.
+/**
+/** :author ziv
+* COMPRESS *ERROR-NR INTO P-RESPONSE.P-RSPCODE
+* COMPRESS 'ERROR in Service:' &1& 'Line:' *ERROR-LINE INTO P-RESPONSE.P-RSPTXT
+* *
+* DEFINE WORK FILE 1 '/tmp/err.log' ATTRIBUTES 'APPEND'  
+* COMPRESS '(' *TIME ') - ERROR   - Service:'  &1& '(' P-RESPONSE.P-RSPCODE  ')'
+*  INTO V-WORKREC
+* WRITE WORK 1 V-WORKREC    
+* COMPRESS V-WORKFIELD 'Timediff (Milli-Sek):'  V-TMPSTAMP-PD INTO V-WORKREC
+* WRITE WORK 1 V-WORKREC
+* COMPRESS V-WORKFIELD 'Response-Text      :' P-RESPONSE.P-RSPTXT   INTO V-WORKREC
+* WRITE WORK 1 V-WORKREC
+* COMPRESS '('*TIME') - End - Service:' &1& INTO V-WORKREC
+* WRITE WORK 1 V-WORKREC  
+* CLOSE WORK 1

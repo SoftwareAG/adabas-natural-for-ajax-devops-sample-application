@@ -1,0 +1,17 @@
+DEFINE DATA PARAMETER
+/* >Natural Source Header 000000
+/* :Mode S
+/* :CP
+/* <Natural Source Header
+/** New Parameter Data Area NCCOMM-P.
+/** A common Parameter Data Area for a service
+/** :author sagadmin
+1 P-COM                      /*IN
+  2 P-LANG     (A1)
+  2 P-USER     (A) DYNAMIC
+  2 P-PASSWORD (A) DYNAMIC
+*
+1 P-RESPONSE                 /*OUT
+  2 P-RSPCODE  (A) DYNAMIC
+  2 P-RSPTXT   (A) DYNAMIC   
+END-DEFINE

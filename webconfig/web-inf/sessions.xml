@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<settings>
+  <global>
+    <last_activity_timeout>3600</last_activity_timeout>
+    <sso_login>false</sso_login>
+    <saml_login>false</saml_login>
+    <trustfile_password>C180460020739B0B3AED74FC70739B0B3AED74FC70739B0B3AED74FC70739B0B3AED74FC7Ÿ</trustfile_password>
+  </global>
+  <users/>
+  <sessions>
+    <session id="##natural.ant.ajax.web.context##" type="OS" trace="false" ssl="false" savesessionuser="true" sharesessionuser="false">
+      <user id="sag" encrypted="true" pwd="C1804600277AB15260F43B43A0739B0B3AED74FC70739B0B3AED74FC70739B0B3AED74FC7Ÿ" ucase="false" />
+      <natural_server>##natural.ant.ajax.session.nwohost##</natural_server>
+      <natural_port>##natural.ant.ajax.session.nwoport##</natural_port>
+      <natural_program>##natural.ant.ajax.session.nwoapp##</natural_program>
+      <natural_parameter>##natural.ant.ajax.session.nwoparms##</natural_parameter>
+      <language>1</language>
+      <double_click>50</double_click>
+      <pfkeys_display>0</pfkeys_display>
+      <nattimeout>60</nattimeout>
+      <screen rows="24" columns="80" showfkeynumbers="false" styleselect="true" />
+      <style_sheet>natural.css</style_sheet>
+    </session>
+  </sessions>
+</settings>
+

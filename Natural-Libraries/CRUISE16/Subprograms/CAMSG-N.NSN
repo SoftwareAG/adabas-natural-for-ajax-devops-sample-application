@@ -1,0 +1,192 @@
+* >Natural Source Header 000000
+* :Mode S
+* :CP
+* <Natural Source Header
+/** New Subprogram CAMSG-N.
+/**
+/** :author sagadmin
+/* TODO Enter your code here
+DEFINE DATA PARAMETER
+1 MSG-GROUP-PARA
+  2 MSG-LANG (A1)
+  2 MSG-NR (N4)
+  2 MSG-TYPE (A1)
+  2 MSG-TEXT (A60)
+END-DEFINE
+*
+IF MSG-GROUP-PARA.MSG-LANG = '2'
+*
+  DECIDE ON FIRST VALUE OF MSG-GROUP-PARA.MSG-NR
+*
+    VALUE 9800 COMPRESS   'Reisebuchung erfolgreich'
+        INTO MSG-GROUP-PARA.MSG-TEXT
+      MOVE 0 TO MSG-GROUP-PARA.MSG-NR
+
+    VALUE 9801 COMPRESS   'Reisebuchung erfolgreich geändert'
+        INTO MSG-GROUP-PARA.MSG-TEXT
+      MOVE 0 TO MSG-GROUP-PARA.MSG-NR
+
+    VALUE 9803 COMPRESS   'Reisebuchung erfolgreich angezeigt'
+        INTO MSG-GROUP-PARA.MSG-TEXT
+      MOVE 0 TO MSG-GROUP-PARA.MSG-NR
+
+    VALUE 9804 COMPRESS   'Reisebuchung erfolgreich gelöscht'
+        INTO MSG-GROUP-PARA.MSG-TEXT
+      MOVE 0 TO MSG-GROUP-PARA.MSG-NR
+* --   
+    VALUE 9805 COMPRESS   'Kundenliste angezeigt'
+        INTO MSG-GROUP-PARA.MSG-TEXT
+      MOVE 0 TO MSG-GROUP-PARA.MSG-NR
+    VALUE 9855 COMPRESS   'keine Kundendaten gefunden'
+        INTO MSG-GROUP-PARA.MSG-TEXT
+* --
+    VALUE 9806 COMPRESS   'Buchungsliste angezeigt'
+        INTO MSG-GROUP-PARA.MSG-TEXT
+      MOVE 0 TO MSG-GROUP-PARA.MSG-NR
+    VALUE 9856 COMPRESS   'keine Buchungsdaten gefunden'
+        INTO MSG-GROUP-PARA.MSG-TEXT
+* --
+    VALUE 9807 COMPRESS   'Reiseliste angezeigt'
+        INTO MSG-GROUP-PARA.MSG-TEXT
+      MOVE 0 TO MSG-GROUP-PARA.MSG-NR
+    VALUE 9857 COMPRESS   'keine Reisedaten gefunden'
+        INTO MSG-GROUP-PARA.MSG-TEXT
+* --
+    VALUE 9901 COMPRESS 'Eingabe Anzahl Reisewochen fehlt'
+        INTO MSG-GROUP-PARA.MSG-TEXT
+    VALUE 9902 COMPRESS 'Reise nicht mehr verfügbar'
+        INTO MSG-GROUP-PARA.MSG-TEXT
+    VALUE 9903 COMPRESS 'Eingabe Buchungsdatum fehlt'
+        INTO MSG-GROUP-PARA.MSG-TEXT
+    VALUE 9904 COMPRESS 'Eingabe Kunden-Nummer fehlt'
+        INTO MSG-GROUP-PARA.MSG-TEXT
+    VALUE 9905 COMPRESS 'Eingabe Reise-Nummer fehlt'
+        INTO MSG-GROUP-PARA.MSG-TEXT
+    VALUE 9911 COMPRESS 'Jahr für Buchung ungültig (2015-2020)'
+        INTO MSG-GROUP-PARA.MSG-TEXT
+    VALUE 9912 COMPRESS 'ungültiges Datumsformat'
+        INTO MSG-GROUP-PARA.MSG-TEXT
+    VALUE 9913 COMPRESS 'Jahr für Reservierung ungültig (2015-2020)'
+        INTO MSG-GROUP-PARA.MSG-TEXT
+    VALUE 9914 COMPRESS 'Format für Reservierungsdatum ungültig'
+        INTO MSG-GROUP-PARA.MSG-TEXT
+    VALUE 9915 COMPRESS 'Nur 1-3 Reise-Wochen möglich'
+        INTO MSG-GROUP-PARA.MSG-TEXT
+    VALUE 9916 COMPRESS 'Reise-Nummer nicht gefunden'
+        INTO MSG-GROUP-PARA.MSG-TEXT
+    VALUE 9917 COMPRESS 'falsches Format für Reisenummer'
+        INTO MSG-GROUP-PARA.MSG-TEXT
+    VALUE 9918 COMPRESS 'Kunden-Nummer nicht gefunden'
+        INTO MSG-GROUP-PARA.MSG-TEXT
+    VALUE 9919 COMPRESS 'falsche Format für Kunden-Nummer'
+        INTO MSG-GROUP-PARA.MSG-TEXT
+    VALUE 9921 COMPRESS 'Eingabe Buchungsnummer fehlt'
+        INTO MSG-GROUP-PARA.MSG-TEXT
+    VALUE 9922 COMPRESS 'Buchungsnummer nicht gefunden oder falsches Format'
+        INTO MSG-GROUP-PARA.MSG-TEXT
+    VALUE 9923 COMPRESS 'Eingabe Kundennummer fehlt'
+        INTO MSG-GROUP-PARA.MSG-TEXT
+    VALUE 9924 COMPRESS 'Kundennummer nicht gefunden'
+        INTO MSG-GROUP-PARA.MSG-TEXT
+    VALUE 9934 COMPRESS 'Kunde parallel geändert'
+        INTO MSG-GROUP-PARA.MSG-TEXT   
+    VALUE 9935 COMPRESS 'keine Daten zum Update gefunden'
+        INTO MSG-GROUP-PARA.MSG-TEXT   
+    VALUE 9999 COMPRESS 'Funktion noch nicht implementiert'
+        INTO MSG-GROUP-PARA.MSG-TEXT
+    NONE IGNORE
+  END-DECIDE
+END-IF
+
+IF MSG-GROUP-PARA.MSG-LANG NE '2'
+  DECIDE ON FIRST VALUE OF MSG-GROUP-PARA.MSG-NR
+*
+    VALUE 9800 COMPRESS   'Travel Booking successful'
+        INTO MSG-GROUP-PARA.MSG-TEXT
+      MOVE 0 TO MSG-GROUP-PARA.MSG-NR
+
+    VALUE 9801 COMPRESS   'Travel Booking successfully modified'
+        INTO MSG-GROUP-PARA.MSG-TEXT
+      MOVE 0 TO MSG-GROUP-PARA.MSG-NR
+
+    VALUE 9803 COMPRESS   'Travel Booking successfully shown'
+        INTO MSG-GROUP-PARA.MSG-TEXT
+      MOVE 0 TO MSG-GROUP-PARA.MSG-NR
+
+    VALUE 9804 COMPRESS   'Travel Booking successfully purged'
+        INTO MSG-GROUP-PARA.MSG-TEXT
+      MOVE 0 TO MSG-GROUP-PARA.MSG-NR
+* --   
+    VALUE 9805 COMPRESS   'Customer List shown'
+        INTO MSG-GROUP-PARA.MSG-TEXT
+      MOVE 0 TO MSG-GROUP-PARA.MSG-NR
+    VALUE 9855 COMPRESS   'no Customer Data found'
+        INTO MSG-GROUP-PARA.MSG-TEXT
+* --
+    VALUE 9806 COMPRESS   'Booking List shown '
+        INTO MSG-GROUP-PARA.MSG-TEXT
+      MOVE 0 TO MSG-GROUP-PARA.MSG-NR
+    VALUE 9856 COMPRESS   'no Booking Data found'
+        INTO MSG-GROUP-PARA.MSG-TEXT
+* --
+    VALUE 9807 COMPRESS   'List of Cruises shown'
+        INTO MSG-GROUP-PARA.MSG-TEXT
+      MOVE 0 TO MSG-GROUP-PARA.MSG-NR
+    VALUE 9857 COMPRESS   'no Cruise Data found'
+        INTO MSG-GROUP-PARA.MSG-TEXT
+* --
+    VALUE 9901 COMPRESS 'Week Count missing'
+        INTO MSG-GROUP-PARA.MSG-TEXT
+    VALUE 9902 COMPRESS 'Cruise no longer available'
+        INTO MSG-GROUP-PARA.MSG-TEXT
+    VALUE 9903 COMPRESS 'Date of Booking missing'
+        INTO MSG-GROUP-PARA.MSG-TEXT
+    VALUE 9904 COMPRESS 'Customer Id missing'
+        INTO MSG-GROUP-PARA.MSG-TEXT
+    VALUE 9905 COMPRESS 'Cruise Id missing'
+        INTO MSG-GROUP-PARA.MSG-TEXT
+    VALUE 9911 COMPRESS 'Year of Booking invalid (2015-2020)'
+        INTO MSG-GROUP-PARA.MSG-TEXT
+    VALUE 9912 COMPRESS 'invalid Date Format'
+        INTO MSG-GROUP-PARA.MSG-TEXT
+    VALUE 9913 COMPRESS 'Year of Reservation invalid (2015-2020)'
+        INTO MSG-GROUP-PARA.MSG-TEXT
+    VALUE 9914 COMPRESS 'Format Date of Reservation invalid'
+        INTO MSG-GROUP-PARA.MSG-TEXT
+    VALUE 9915 COMPRESS 'only 1-3 Weeks possible'
+        INTO MSG-GROUP-PARA.MSG-TEXT
+    VALUE 9916 COMPRESS 'Cruise Id not found'
+        INTO MSG-GROUP-PARA.MSG-TEXT
+    VALUE 9917 COMPRESS 'Format of Cruise Id invalid'
+        INTO MSG-GROUP-PARA.MSG-TEXT
+    VALUE 9918 COMPRESS 'Customer Id not found'
+        INTO MSG-GROUP-PARA.MSG-TEXT
+    VALUE 9919 COMPRESS 'wrong Format for Customer Id'
+        INTO MSG-GROUP-PARA.MSG-TEXT
+    VALUE 9921 COMPRESS 'Booking Id missing'
+        INTO MSG-GROUP-PARA.MSG-TEXT
+    VALUE 9922 COMPRESS 'Bookig Id not found or wrong format'
+        INTO MSG-GROUP-PARA.MSG-TEXT
+    VALUE 9923 COMPRESS 'Customer Id missing'
+        INTO MSG-GROUP-PARA.MSG-TEXT
+    VALUE 9924 COMPRESS 'Customer Id not found'
+        INTO MSG-GROUP-PARA.MSG-TEXT
+    VALUE 9934 COMPRESS 'Customer changed from another user'
+        INTO MSG-GROUP-PARA.MSG-TEXT  
+    VALUE 9935 COMPRESS 'no valid data found for update'
+        INTO MSG-GROUP-PARA.MSG-TEXT
+    VALUE 9999 COMPRESS 'Function not yet supported '
+        INTO MSG-GROUP-PARA.MSG-TEXT
+    NONE IGNORE
+  END-DECIDE
+*
+END-IF
+*
+IF MSG-GROUP-PARA.MSG-NR = 0
+  MOVE 'S' TO MSG-GROUP-PARA.MSG-TYPE
+ELSE
+  MOVE 'I' TO MSG-GROUP-PARA.MSG-TYPE
+END-IF
+*
+END
+

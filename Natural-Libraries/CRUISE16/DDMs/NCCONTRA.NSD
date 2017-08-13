@@ -1,0 +1,30 @@
+DB: 012 FILE: 043  - NCCONTRACT                       DEFAULT SEQUENCE:   
+TYPE: ADABAS
+ 
+T L DB Name                              F Leng  S D Remark
+- - -- --------------------------------- - ----  - - ------------------------
+*      >Natural Source Header 000000
+*      :CP
+*      
+*      
+*      :LineIncrement 10
+*      <Natural Source Header
+  1 B1 CONTRACT-ID                       P  6.0  N D 
+  1 B3 PRICE                             P 10.3  N   
+  1 B4 DID-CONDITIONS                    A    8  N D 
+*      ID of document including                      
+*      contract conditions                           
+  1 B5 DATE-RESERVATION                  N  8.0  N D 
+  1 B6 DATE-BOOKING                      N  8.0  N D 
+  1 B7 DATE-CANCELLATION                 N  8.0  N D 
+G 1 B8 DEPOSIT                                       
+  2 B9 DATE-D                            N  8.0  N   
+  2 CA AMOUNT-D                          P 10.3  N   
+G 1 CB PAYMENT-OF-BALANCE                            
+  2 CC DATE-P                            N  8.0  N   
+  2 CD AMOUNT-P                          P 10.3  N   
+  1 CE ID-CUSTOMER                       N  8.0  N D 
+*      PERSON-ID of customer                         
+  1 CF ID-CRUISE                         N  8.0  N D 
+*      CRUISE-ID, subject of contract                
+******DDM OUTPUT TERMINATED******

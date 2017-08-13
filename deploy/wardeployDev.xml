@@ -1,0 +1,1275 @@
+<!-- ANT_AJAX_SCRIPT (do not remove) -->
+<project name="${natural.ant.ajax.project.name}" default="build" basedir=".">
+
+    <target name="help"
+            description="shows a help screen">
+      <!-- display help screen -->
+      <echo message="ANT Ajax deployment utility"/>
+      <echo message=" "/>
+      <echo message="  This utility performs deployment processing for NaturalONE Ajax."/>
+      <echo message=" "/>
+      <echo message="  The following targets are available:"/>
+      <echo message="    checkout               do inital repository checkout"/>
+      <echo message="                           of the specified project resources"/>
+      <echo message="    update                 do incremental repository"/>
+      <echo message="                           update of the project resources"/>
+      <echo message="    build                  initiate the build process"/>
+      <echo message=" "/> 
+      <echo message="  The following options are available:"/>
+      <echo message="    -Dnatural.ant.ajax.project.rootdir={dirname}"/>
+      <echo message="        specify root directory for project"/>
+      <echo message="    -Dnatural.ant.ajax.failonerror=yes/no"/>
+      <echo message="        specify if the script should fail on errors (default:no)"/>
+      <echo message="    -Dnatural.ant.ajax.appserver=Tomcat/WebSphere/JBoss7/JBoss8"/>
+      <echo message="        specify the target application server (default:tomcat)"/>
+      <echo message="    -logfile {filename}"/>
+      <echo message="        use given file for log"/>
+      <echo message=" "/>
+    </target>
+
+    
+    <target name="-setProperties">
+    <!-- Property logic: DO NOT EDIT NOR REMOVE -->
+    <!-- ### ANT_DEPLOY_PROPERTIES_START ### -->
+    <property environment="env"/>
+    <property name="natural.ant.ajax.repository.username" value="" />
+    <property name="natural.ant.ajax.appserver" value="Tomcat" />
+    <property name="natural.ant.ajax.project.rootdir" value="/var/lib/jenkins/workspace/NJX-CI-Dev" />
+    <property name="natural.ant.ajax.njx.licensefile" value="/var/lib/jenkins/sagnjx/njx83.xml" />
+    <property name="natural.ant.ajax.deploy.file.name" value="wardeployDev.xml" />
+    <property name="natural.ant.ajax.session.nwohost" value="localhost" />
+    <property name="natural.ant.ajax.repository.url" value="" />
+    <property name="natural.ant.ajax.repository.access.method" value=":pserver:" />
+    <property name="natural.ant.ajax.project.name" value="SunnyIslands" />
+    <property name="natural.ant.ajax.repository.module" value="SunnyIslands" />
+    <property name="natural.ant.ajax.njx.application" value="/var/lib/jenkins/sagnjx/njx83.war" />
+    <property name="natural.ant.ajax.repository.password" value="" />
+    <property name="natural.ant.ajax.web.context" value="SunnyIslands-Dev" />
+    <property name="natural.ant.ajax.failonerror" value="YES" />
+    <property name="natural.ant.ajax.repository.version" value="master" />
+    <property name="natural.ant.ajax.session.nwoapp" value="nwo.sh" />
+    <property name="natural.ant.ajax.njx.deploy.as.war" value="YES" />
+    <property name="natural.ant.ajax.project.compile.java.sources" value="NO" />
+    <property name="natural.ant.ajax.repository.type" value="SVN" />
+    <property name="natural.ant.ajax.njx.application.export" value="" />
+    <property name="natural.ant.ajax.project.uicomp01" value="CruisePages" />
+    <property name="natural.ant.ajax.project.uicomps" value="CruisePages=true;" />
+    <property name="natural.ant.ajax.project.description" value="SunnyIslands-Dev" />
+    <property name="natural.ant.ajax.session.nwoparms" value="PARM=NDVDEV STACK=(LOGON RDCRUISE;RDCRUISP)" />
+    <property name="natural.ant.ajax.project.password.encryption" value="YES" />
+    <property name="natural.ant.ajax.njx.deploy.as.export" value="NO" />
+    <property name="natural.ant.ajax.session.nwoport" value="2900" />
+    <!-- ### ANT_DEPLOY_PROPERTIES_END ###   -->
+    </target>
+
+
+    <target name="-initProperties">
+      <!-- set some property values based on other loaded properties -->
+
+      <!-- set repository properties -->    
+      <condition property="natural.ant.ajax.repository.type.svn" value="yes">
+        <or>
+          <equals arg1="${natural.ant.ajax.repository.type}" arg2="SVN"/>
+          <equals arg1="${natural.ant.ajax.repository.type}" arg2="svn"/>
+        </or>
+      </condition>
+      <condition property="natural.ant.ajax.repository.type.cvs" value="yes">
+        <or>
+          <equals arg1="${natural.ant.ajax.repository.type}" arg2="CVS"/>
+          <equals arg1="${natural.ant.ajax.repository.type}" arg2="cvs"/>
+        </or>
+      </condition>  
+      <condition property="natural.ant.ajax.repository.type.git" value="yes">
+        <or>
+          <equals arg1="${natural.ant.ajax.repository.type}" arg2="GIT"/>
+          <equals arg1="${natural.ant.ajax.repository.type}" arg2="git"/>
+        </or>
+      </condition>  
+      <condition property="natural.ant.ajax.failonerror.internal" value="true" else="false">
+        <or>
+          <equals arg1="${natural.ant.ajax.failonerror}" arg2="yes"/>
+          <equals arg1="${natural.ant.ajax.failonerror}" arg2="YES"/>
+        </or>
+      </condition>  
+      <condition property="natural.ant.ajax.njx.deploy.as.war.internal" value="yes">
+        <or>
+          <equals arg1="${natural.ant.ajax.njx.deploy.as.war}" arg2="YES"/>
+          <equals arg1="${natural.ant.ajax.njx.deploy.as.war}" arg2="yes"/>
+        </or>
+      </condition>
+      <condition property="natural.ant.ajax.web.context.active" value="${natural.ant.ajax.web.context}" else="UnOpTaInIuM42">
+        <or>
+          <equals arg1="${natural.ant.ajax.njx.deploy.as.war}" arg2="YES"/>
+          <equals arg1="${natural.ant.ajax.njx.deploy.as.war}" arg2="yes"/>
+        </or>
+      </condition>
+      <condition property="natural.ant.ajax.appserver.tomcat" value="true">
+        <or>
+          <equals arg1="${natural.ant.ajax.appserver}" arg2="Tomcat"/>
+        </or>
+      </condition>  
+      <condition property="natural.ant.ajax.appserver.websphere" value="true">
+        <or>
+          <equals arg1="${natural.ant.ajax.appserver}" arg2="WebSphere"/>
+        </or>
+      </condition>  
+      <condition property="natural.ant.ajax.appserver.jboss7" value="true">
+        <or>
+          <equals arg1="${natural.ant.ajax.appserver}" arg2="JBoss7"/>
+        </or>
+      </condition>
+      <condition property="natural.ant.ajax.appserver.jboss8" value="true">
+    	<or>
+    	  <equals arg1="${natural.ant.ajax.appserver}" arg2="JBoss8"/>
+    	</or>
+      </condition> 
+      <property name="natural.ant.ajax.tstamp.format" value="HH:mm:ss.SSS"/>
+    </target>
+
+
+    <target name="-setRootdir" depends="-setRootdirEclipse,-setRootdirNoEclipse">
+      <!-- set the rootdir -->
+      <mkdir dir="${natural.ant.ajax.project.rootdir.active}"/>
+      <available file="${natural.ant.ajax.project.rootdir.active}" type="dir"
+                 property="temp.natural.ant.ajax.project.rootdir.active.exists"/>
+      <fail unless="temp.natural.ant.ajax.project.rootdir.active.exists" 
+            message="ERROR: Root directory '${natural.ant.ajax.project.rootdir.active}' does not exist."/>    
+      <echo message="INFO: Using root directory '${natural.ant.ajax.project.rootdir.active}'"/>
+    </target>
+
+
+    <target name="-setRootdirEclipse" if="natural.eclipse.running">
+      <!-- set the rootdir in case of running inside Eclipse -->
+      <property name="natural.ant.ajax.project.rootdir.active" value=".."/>
+    </target>
+
+
+    <target name="-setRootdirNoEclipse" depends="-setRootdirNoEclipseGit,-setRootdirNoEclipseNoGit"
+	                                    unless="natural.eclipse.running">
+      <!-- set the rootdir in case of running outside Eclipse -->
+    </target>
+
+
+    <target name="-setRootdirNoEclipseGit" if="natural.ant.ajax.repository.type.git">
+	   <!-- set the rootdir in case of running outside Eclipse with Git -->
+	   <property name="natural.ant.ajax.project.rootdir.active" value="${natural.ant.ajax.project.rootdir}/${natural.ant.ajax.project.name}"/>
+	</target>
+	        
+	        
+	<target name="-setRootdirNoEclipseNoGit" unless="natural.ant.ajax.repository.type.git">
+	  <!-- set the rootdir in case of running outside Eclipse without Git -->
+	  <property name="natural.ant.ajax.project.rootdir.active" value="${natural.ant.ajax.project.rootdir}"/>
+	</target>
+	        
+	        
+    <target name="-checkProjectdir">
+      <!-- check projectdir for validity -->
+      <available file="${natural.ant.ajax.project.rootdir.active}/${natural.ant.ajax.project.name}" type="dir"
+                 property="temp.natural.ant.ajax.project.rootdir.project.exists"/>
+      <fail unless="temp.natural.ant.ajax.project.rootdir.project.exists" 
+            message="ERROR: Project '${natural.ant.ajax.project.name}' does not exist in root directory '${natural.ant.ajax.project.rootdir.active}'"/>
+      <echo message="INFO: Using project '${natural.ant.ajax.project.name}' in root directory '${natural.ant.ajax.project.rootdir.active}'"/>
+    </target>
+
+
+    <path id="natural.ant.searchpath">
+      <pathelement location="${natural.eclipse.bundle.location}/com.softwareag.naturalone.natural.ant/bin"/>
+      <pathelement path="${classpath}"/>
+      <fileset dir="${natural.eclipse.home}/plugins">
+        <include name="com.softwareag.naturalone.natural.ant*.jar"/>
+      </fileset>
+    </path>
+    
+    
+    <target name="-defineTaskEclipse" if="natural.eclipse.home">
+      <!-- define task     -->    
+      <antcall target="-printTimestamp">
+        <param name="message" value="start of defineTaskEclipse" />
+      </antcall>
+      <taskdef name="natantcrypt" 
+               classname="com.softwareag.naturalone.natural.ant.tasks.NaturalAntEncryptionTask" >
+        <classpath refid="natural.ant.searchpath"/>
+      </taskdef>
+      <antcall target="-printTimestamp">
+        <param name="message" value="end of defineTaskEclipse" />
+      </antcall>
+    </target>
+
+    
+    <target name="-defineTaskNoEclipse" unless="natural.eclipse.home">
+      <!-- define task     -->    
+      <antcall target="-printTimestamp">
+        <param name="message" value="start of defineTaskNoEclipse" />
+      </antcall>
+      <taskdef name="natantcrypt" 
+               classname="com.softwareag.naturalone.natural.ant.tasks.NaturalAntEncryptionTask" >
+      </taskdef>
+      <antcall target="-printTimestamp">
+        <param name="message" value="end of defineTaskNoEclipse" />
+      </antcall>
+    </target>
+
+    
+	<target name="-printTimestamp" if="natural.ant.ajax.tstamp.format">
+	  <tstamp>
+	      <format property="current.time" pattern="${natural.ant.ajax.tstamp.format}" />
+	  </tstamp>
+	  <echo message="TIMESTAMP: ${message} : ${current.time}" />
+    </target>
+	    
+	  
+    <target name="-init" depends="-printHeader,-setProperties,-initProperties,-setRootdir,-defineTaskEclipse,-defineTaskNoEclipse">
+    </target>
+
+    
+    <target name="-printHeader">
+        <echo message="*****************************************************************"/> 
+        <echo message="*  ANT Ajax Deployment Script:"/> 
+        <echo message="*  ${ant.file}"/> 
+        <echo message="*****************************************************************"/> 
+    </target>
+
+    
+    <target name="checkout" depends="-init,-rep_password,-svn_checkout,-cvs_checkout,-git_checkout"
+            unless="natural.eclipse.running"
+            description="performs a checkout of the sources from the corresponding versioning system">
+      <!--  distinguish between SVN and CVS and GIT -->
+    </target>
+
+
+    <target name="-svn_checkout" if="natural.ant.ajax.repository.type.svn"
+                                 unless="natural.eclipse.running">
+      <!-- initial checkout  -->
+        <antcall target="-printTimestamp">
+          <param name="message" value="start of checkout" />
+        </antcall>
+        <exec executable="svn" failonerror="${natural.ant.ajax.failonerror.internal}">
+         <arg value="checkout"/>
+         <arg value="--username"/>
+         <arg value="${natural.ant.ajax.repository.username}"/>
+         <arg value="--password"/>
+         <arg value="${internal.natural.ant.ajax.repository.password}"/>
+         <arg value="${natural.ant.ajax.repository.url}"/>
+         <arg value="${natural.ant.ajax.project.rootdir.active}/${natural.ant.ajax.project.name}"/>
+         <arg value="-r${natural.ant.ajax.repository.version}"/>
+        </exec>
+        <antcall target="-printTimestamp">
+          <param name="message" value="end of checkout" />
+        </antcall>
+    </target>  
+
+
+    <target name="-cvs_cvsroot" if="natural.ant.ajax.repository.type.cvs">
+      <property name="tmp.natural.cvsroot1" value="${natural.ant.ajax.repository.access.method}${natural.ant.ajax.repository.username}"/>
+      <condition property="tmp.natural.cvsroot2" value="${tmp.natural.cvsroot1}:${internal.natural.ant.ajax.repository.password}" else="${tmp.natural.cvsroot1}">
+        <and>
+          <isset property="internal.natural.ant.ajax.repository.password"/>
+          <not>
+            <equals arg1="${internal.natural.ant.ajax.repository.password}" arg2=""/>
+          </not>
+        </and>
+      </condition>
+      <property name="tmp.natural.cvsroot3" value="${tmp.natural.cvsroot2}${natural.ant.ajax.repository.url}"/>
+      <!--  finally set cvsroot -->
+      <property name="natural.ant.ajax.repository.cvsroot" value="${tmp.natural.cvsroot3}"/>
+    </target>
+
+
+    <target name="-cvs_checkout" if="natural.ant.ajax.repository.type.cvs" 
+                                 unless="natural.eclipse.running" 
+                                 depends="-cvs_cvsroot">
+      <!-- initial checkout  -->
+        <antcall target="-printTimestamp">
+          <param name="message" value="start of checkout" />
+        </antcall>
+        <cvs cvsRoot="${natural.ant.ajax.repository.cvsroot}"
+             command="checkout -d &quot;${natural.ant.ajax.project.name}&quot;"
+             package="&quot;${natural.ant.ajax.repository.module}&quot;"
+             dest="${natural.ant.ajax.project.rootdir.active}"
+             tag="${natural.ant.ajax.repository.version}"
+        	 failonerror="${natural.ant.ajax.failonerror.internal}"
+         />
+        <antcall target="-printTimestamp">
+          <param name="message" value="end of checkout" />
+        </antcall>
+    </target>  
+
+	
+	<target name="-git_checkout" if="natural.ant.ajax.repository.type.git" 
+	                             unless="natural.eclipse.running">
+	  <!-- initial checkout  -->
+	    <antcall target="-printTimestamp">
+	      <param name="message" value="start of checkout" />
+        </antcall>
+	    <exec executable="git" failonerror="${natural.ant.ajax.failonerror.internal}">
+	      <arg value="clone"/>
+	      <arg value="--branch"/>
+	      <arg value="${natural.ant.ajax.repository.version}"/>
+	      <arg value="${natural.ant.ajax.repository.url}"/>
+	      <arg value="${natural.ant.ajax.project.rootdir.active}"/>
+	    </exec>
+        <antcall target="-printTimestamp">
+	      <param name="message" value="end of checkout" />
+	    </antcall>
+	</target>  
+
+
+    <target name="update" depends="-init,-checkProjectdir,-rep_password,-svn_update,-cvs_update,-git_update"
+            unless="natural.eclipse.running"
+            description="performs an incremental update on the sources from the versioning system">
+      <!--  distinguish between SVN and CVS and GIT -->
+    </target>
+
+
+    <target name="-svn_update" if="natural.ant.ajax.repository.type.svn"
+                               unless="natural.eclipse.running">
+      <!-- repository update  -->
+        <antcall target="-printTimestamp">
+          <param name="message" value="start of update" />
+        </antcall>
+        <exec executable="svn" failonerror="${natural.ant.ajax.failonerror.internal}">
+         <arg value="update"/>
+         <arg value="${natural.ant.ajax.project.rootdir.active}/${natural.ant.ajax.project.name}"/>
+         <arg value="-r${natural.ant.ajax.repository.version}"/>
+        </exec>
+        <antcall target="-printTimestamp">
+          <param name="message" value="end of update" />
+        </antcall>
+    </target>
+
+
+    <target name="-cvs_update" if="natural.ant.ajax.repository.type.cvs" 
+                               unless="natural.eclipse.running" 
+                               depends="-cvs_cvsroot">
+      <!-- repository update  -->
+        <antcall target="-printTimestamp">
+          <param name="message" value="start of update" />
+        </antcall>
+        <cvs cvsRoot="${natural.ant.ajax.repository.cvsroot}"
+             command="update -d"
+             dest="${natural.ant.ajax.project.rootdir.active}"
+        	 failonerror="${natural.ant.ajax.failonerror.internal}"
+         />
+        <antcall target="-printTimestamp">
+          <param name="message" value="end of update" />
+        </antcall>
+    </target>
+
+	
+	<target name="-git_update" if="natural.ant.ajax.repository.type.git"
+	                           unless="natural.eclipse.running">
+	  <!-- repository update  -->
+        <antcall target="-printTimestamp">
+          <param name="message" value="start of update" />
+        </antcall>
+	    <exec executable="git" dir="${natural.ant.ajax.project.rootdir.active}" 
+	          failonerror="${natural.ant.ajax.failonerror.internal}">
+	      <arg value="pull"/>
+	      <arg value="origin"/>
+	    </exec>
+        <antcall target="-printTimestamp">
+          <param name="message" value="end of update" />
+        </antcall>
+	</target>
+	      
+	
+    <target name="-rep_password">
+      <!-- repository passwords  -->
+      <natantcrypt input="natural.ant.ajax.repository.password"
+                   encryption="natural.ant.ajax.project.password.encryption"
+                   output="internal.natural.ant.ajax.repository.password"/>
+    </target>
+
+
+    <target name="build" depends="-init,-checkProjectdir,-processBuild"
+            description="performs a build process with the current workspace">
+      <!--  refer to the build target -->
+    </target>
+
+
+    <target name="-getUIRootFolder.check">
+      <!-- check if the ui components root folder -->
+      <property name="uiroot" value="User-Interface-Components"/>
+      <echo message="INFO: uiroot: ${uiroot}"/>
+      <condition property="-getUIRootFolder.exists">
+        <available file="${natural.ant.ajax.project.rootdir.active}/${natural.ant.ajax.project.name}/${uiroot}" type="dir"/>
+      </condition>
+    </target>
+
+
+    <target name="-getUIRootFolderYes" depends="-getUIRootFolder.check" if="-getUIRootFolder.exists">
+      <!-- determine the name of the ui components root folder -->
+      <property name="uirootfolder" value="${uiroot}"/>
+      <echo message="INFO: User interface components root folder is ${uirootfolder}"/>
+    </target>
+
+    
+    <target name="-getUIRootFolderNo" depends="-getUIRootFolder.check" unless="-getUIRootFolder.exists">
+      <!-- determine the name of the ui components root folder -->
+      <property name="uirootfolder" value="."/>
+      <echo message="INFO: User interface components root folder is ${uirootfolder}"/>
+    </target>
+    
+    <target name="-copyUIcomp" depends="-getUIRootFolderYes,-getUIRootFolderNo">
+      <!-- copy a ui component into the web application -->
+      <mkdir dir="${natural.ant.ajax.project.rootdir.active}/${natural.ant.ajax.web.context.active}.tmp/${param.uicomp}"/>
+      <copy todir="${natural.ant.ajax.project.rootdir.active}/${natural.ant.ajax.web.context.active}.tmp/${param.uicomp}">
+        <fileset dir="${natural.ant.ajax.project.rootdir.active}/${natural.ant.ajax.project.name}/${uirootfolder}/${param.uicomp}">
+        </fileset>
+      </copy>
+      <!-- copy custom cisconfig.xml from UI if file exists -->
+      <copy todir="${natural.ant.ajax.project.rootdir.active}/${natural.ant.ajax.web.context.active}.tmp/cis/config"
+        overwrite="true">
+        <fileset dir="${natural.ant.ajax.project.rootdir.active}/${natural.ant.ajax.web.context.active}.tmp/${param.uicomp}/cisconfig" 
+         erroronmissingdir="false">
+          <filename name="cisconfig.xml" />
+        </fileset>
+      </copy>
+    </target>
+
+
+	<path id="cis.classpath">
+	   <fileset dir="${natural.ant.ajax.project.rootdir.active}/${natural.ant.ajax.web.context.active}.tmp/WEB-INF/lib"  
+	    	     erroronmissingdir="false">
+	   <include name="**/**.jar"/>
+	   </fileset>
+	   <pathelement path="${env.CLASSPATH}"/>
+	</path>
+
+	
+	<target name="-generateUIcomp">
+      <!-- generate html etc. for a ui component -->
+      <!-- set up what the generator needs -->
+      <mkdir dir="${natural.ant.ajax.project.rootdir.active}/${natural.ant.ajax.web.context.active}.tmp/${param.uicomp}/log"/>
+      <mkdir dir="${natural.ant.ajax.project.rootdir.active}/${natural.ant.ajax.web.context.active}.tmp/${param.uicomp}/accesspath"/>
+      <property environment="env"/>
+      <!-- make export specific actions -->
+      <antcall target="-moveCisapplicationFileAway"/>
+		
+	  <!-- compile Java classes -->
+	  <antcall target="-compileJavaClasses"/>
+		
+      <!-- check existence of StyleSheetGeneratorWholeDirectory class -->  
+	  <condition property="natural.ant.ajax.StyleSheetGeneratorWholeDirectory.present" value="true">
+		  <and>
+		  	<isset property="natural.ant.ajax.njx.deploy.as.war.internal" />
+			<available classpathref="cis.classpath"
+			 classname="com.softwareag.cis.editor.StyleSheetGeneratorWholeDirectory" />
+		  </and>
+	  </condition>
+	  <antcall target="-generateCss"/>	  
+	  
+      <!-- check existence of HTMLGeneratorWholeDirectory class -->
+      <available classpathref="cis.classpath"
+      	         classname="com.softwareag.cis.gui.generate.HTMLGeneratorWholeDirectory" 
+      	         property="natural.ant.ajax.HTMLGeneratorWholeDirectory.present"/>
+      <antcall target="-javaHTMLGeneratorWholeDirectory"/>
+      
+      <!-- deploy custom NatLogon and/or NatDisconnect pages -->
+      <antcall target="-generateCustomNatPages"/>
+      
+      <!-- make export specific actions -->
+      <antcall target="-moveCisapplicationFileBack"/>
+      <!-- remove log files and temp files -->
+      <delete dir="${natural.ant.ajax.project.rootdir.active}/${natural.ant.ajax.web.context.active}.tmp/${param.uicomp}/log"/>
+      <delete>
+        <fileset dir="${natural.ant.ajax.project.rootdir.active}/${natural.ant.ajax.web.context.active}.tmp/${param.uicomp}" includes="ZZZZZZZZ*.*"/>
+      </delete>
+      <!-- refresh adapters in Natural library -->
+      <antcall target="-copyNatAdaptersIntoProject"/>
+      <!-- remove adapters -->
+      <antcall target="-deleteNatDirectory"/>
+
+    </target>
+		
+	
+	<target name="-uicomp.stylesdir.check">
+        <echo message="INFO: Check existence of a styles directory in: ${natural.ant.ajax.project.rootdir.active}/${natural.ant.ajax.web.context.active}.tmp/${param.uicomp}/styles" />
+        <condition property="uicomp.stylesdir.present">        
+            <available file="${natural.ant.ajax.project.rootdir.active}/${natural.ant.ajax.web.context.active}.tmp/${param.uicomp}/styles" type="dir"/>
+        </condition>
+    </target>
+	
+	<target name="-javaGenerateCSS" depends="-uicomp.stylesdir.check,-javaGenerateCSSYes,-javaGenerateCSSNo" >
+    </target>	
+    
+    <target name="-javaGenerateCSSNo" unless="uicomp.stylesdir.present">
+       <echo message="INFO: No style sheet directory found"/>
+    </target>
+    
+    	
+    <target name="-javaGenerateCSSYes" if="uicomp.stylesdir.present">
+        <echo message="Found styles directory."/>
+    	<mkdir dir="${natural.ant.ajax.project.rootdir.active}/${natural.ant.ajax.web.context.active}.tmp/log/" />
+    	<echo message="INFO: Generate CSS files"/>
+
+        <antcall target="-printTimestamp">
+          <param name="message" value="start of javaGenerateCSS ${param.uicomp}" />
+        </antcall>
+		<java fork="true" classname="com.softwareag.cis.editor.StyleSheetGeneratorWholeDirectory"
+		   classpathref="cis.classpath"
+		   failonerror="${natural.ant.ajax.failonerror.internal}">
+        	<arg value="${natural.ant.ajax.project.rootdir.active}/${natural.ant.ajax.web.context.active}.tmp"/>
+        	<arg value="${natural.ant.ajax.project.rootdir.active}/${natural.ant.ajax.web.context.active}.tmp/log/"/>
+        	<arg value="${natural.ant.ajax.project.rootdir.active}/${natural.ant.ajax.web.context.active}.tmp/${param.uicomp}/styles"/>
+       </java>
+		
+		<delete dir="${natural.ant.ajax.project.rootdir.active}/${natural.ant.ajax.web.context.active}/log/" />
+        <antcall target="-printTimestamp">
+          <param name="message" value="end of javaGenerateCSS ${param.uicomp}" />
+        </antcall>
+	</target>
+	
+	
+	<target name="-generateCss" depends="-generateCssYES,-generateCssNO">
+    </target>
+	
+	<target name="-generateCssNO" unless="natural.ant.ajax.StyleSheetGeneratorWholeDirectory.present">
+		<echo message="WARNING: Class com.softwareag.cis.editor.StyleSheetGeneratorWholeDirectory not found"/>
+    </target>	
+	
+
+	<target name="-generateCssYES" if="natural.ant.ajax.StyleSheetGeneratorWholeDirectory.present">
+	    <echo message="INFO: Class com.softwareag.cis.editor.StyleSheetGeneratorWholeDirectory found"/>
+		<antcall target="-javaGenerateCSS"/>
+	</target>		
+
+	
+	<target name="-javaHTMLGeneratorWholeDirectory" depends="-javaHTMLGeneratorWholeDirectoryYES,-javaHTMLGeneratorWholeDirectoryNO">
+    </target>
+
+	
+	<target name="-javaHTMLGeneratorWholeDirectoryNO" unless="natural.ant.ajax.HTMLGeneratorWholeDirectory.present">
+		<echo message="WARNING: Class com.softwareag.cis.gui.generate.HTMLGeneratorWholeDirectory not found"/>
+    </target>
+
+	
+	<target name="-javaHTMLGeneratorWholeDirectoryYES" if="natural.ant.ajax.HTMLGeneratorWholeDirectory.present">
+	  <echo message="INFO: Class com.softwareag.cis.gui.generate.HTMLGeneratorWholeDirectory found"/>
+      <!-- run the generator in an own JVM (otherwise the .jars in WEB-INF/lib stay locked) -->
+      <antcall target="-printTimestamp">
+        <param name="message" value="start of javaHTMLGeneratorWholeDirectory ${param.uicomp}" />
+      </antcall>
+      <java 
+      	fork="true" 
+      	classname="com.softwareag.cis.gui.generate.HTMLGeneratorWholeDirectory" 
+        classpathref="cis.classpath"
+      	failonerror="${natural.ant.ajax.failonerror.internal}">
+        	<sysproperty key="cis.home" value="${natural.ant.ajax.project.rootdir.active}/${natural.ant.ajax.web.context.active}.tmp"/>
+        	<arg value="${natural.ant.ajax.project.rootdir.active}/${natural.ant.ajax.web.context.active}.tmp/${param.uicomp}/xml"/>
+        	<arg value="${natural.ant.ajax.project.rootdir.active}/${natural.ant.ajax.web.context.active}.tmp/${param.uicomp}"/>
+        	<arg value="${natural.ant.ajax.project.rootdir.active}/${natural.ant.ajax.web.context.active}.tmp/${param.uicomp}/log"/>
+        	<arg value="${natural.ant.ajax.project.rootdir.active}/${natural.ant.ajax.web.context.active}.tmp/${param.uicomp}/accesspath"/>
+      </java>		
+      <antcall target="-printTimestamp">
+        <param name="message" value="end of javaHTMLGeneratorWholeDirectory ${param.uicomp}" />
+      </antcall>
+    </target>
+     
+    <target name="-generateCustomNatPages" >
+      <antcall target="-printTimestamp">
+        <param name="message" value="start of generateCustomNatPages ${param.uicomp}" />
+      </antcall>
+      <copy todir="${natural.ant.ajax.project.rootdir.active}/${natural.ant.ajax.web.context.active}.tmp/cisnatural/xml"
+        overwrite="true">
+        <fileset dir="${natural.ant.ajax.project.rootdir.active}/${natural.ant.ajax.web.context.active}.tmp/${param.uicomp}/xml">
+          <filename name="NatDisconnect.xml" />
+        </fileset>
+      </copy>
+      <copy todir="${natural.ant.ajax.project.rootdir.active}/${natural.ant.ajax.web.context.active}.tmp/cisnatural/xml"
+        overwrite="true">
+        <fileset dir="${natural.ant.ajax.project.rootdir.active}/${natural.ant.ajax.web.context.active}.tmp/${param.uicomp}/xml">
+          <filename name="NatLogon.xml" />
+        </fileset>
+      </copy>
+      <copy todir="${natural.ant.ajax.project.rootdir.active}/${natural.ant.ajax.web.context.active}.tmp/cisnatural"
+        overwrite="true">
+        <fileset dir="${natural.ant.ajax.project.rootdir.active}/${natural.ant.ajax.web.context.active}.tmp/${param.uicomp}">
+          <filename name="NatDisconnect*.*" />
+        </fileset>
+      </copy>
+      <copy todir="${natural.ant.ajax.project.rootdir.active}/${natural.ant.ajax.web.context.active}.tmp/cisnatural"
+        overwrite="true">
+        <fileset dir="${natural.ant.ajax.project.rootdir.active}/${natural.ant.ajax.web.context.active}.tmp/${param.uicomp}">
+          <filename name="NatLogon*.*" />
+        </fileset>
+      </copy>
+      <antcall target="-printTimestamp">
+        <param name="message" value="end of generateCustomNatPages ${param.uicomp}" />
+      </antcall>
+    </target>
+    
+	
+	<target name="-moveCisapplicationFileAway">
+	  <move 
+	  	file="${natural.ant.ajax.project.rootdir.active}/${natural.ant.ajax.web.context.active}.tmp/${param.uicomp}/.cisapplication"
+	  	tofile="${natural.ant.ajax.project.rootdir.active}/${natural.ant.ajax.web.context.active}.tmp/${param.uicomp}/.cisapplicationAWAY"
+	  	failonerror="false"
+	  />
+	</target>
+
+	
+	<target name="-moveCisapplicationFileBack">
+	  <move 
+	  	file="${natural.ant.ajax.project.rootdir.active}/${natural.ant.ajax.web.context.active}.tmp/${param.uicomp}/.cisapplicationAWAY"
+	  	tofile="${natural.ant.ajax.project.rootdir.active}/${natural.ant.ajax.web.context.active}.tmp/${param.uicomp}/.cisapplication"
+	  	failonerror="false"
+	  />
+	</target>
+	
+	
+	<target name="-copyNatAdaptersIntoProject.check" depends="-getUIRootFolderYes,-getUIRootFolderNo">
+      <condition property="-copyNatAdaptersIntoProject.yes" value="yes">
+      	<and>
+          <not>
+            <isset property="natural.eclipse.running"/>
+          </not>
+      	  <available file="${natural.ant.ajax.project.rootdir.active}/${natural.ant.ajax.web.context.active}.tmp/${param.uicomp}/.cisapplication" type="file"/>
+       	  <available file="${natural.ant.ajax.project.rootdir.active}/${natural.ant.ajax.web.context.active}.tmp/${param.uicomp}/nat" type="dir"/>
+        </and>
+      </condition>
+	</target>
+
+	
+	<target name="-copyNatAdaptersIntoProject" depends="-copyNatAdaptersIntoProject.check" if="-copyNatAdaptersIntoProject.yes">
+	  <!-- copy Adapters into Natural library -->	
+      <antcall target="-printTimestamp">
+        <param name="message" value="start of copyNatAdaptersIntoProject ${param.uicomp}" />
+      </antcall>
+	  <xmlproperty file="${natural.ant.ajax.project.rootdir.active}/${natural.ant.ajax.web.context.active}.tmp/${param.uicomp}/.cisapplication"
+	               collapseAttributes="true"/>
+      <echo message="INFO: refreshing Natural adapters in Natural library"/>	  
+      <copy todir="${natural.ant.ajax.project.rootdir.active}/${natural.ant.ajax.project.name}/${uirootfolder}/${param.uicomp}/${cisapplication.cisentry.value}">
+        <fileset dir="${natural.ant.ajax.project.rootdir.active}/${natural.ant.ajax.web.context.active}.tmp/${param.uicomp}/nat" includes="*.NS8">
+        </fileset>
+      </copy>
+      <antcall target="-printTimestamp">
+        <param name="message" value="end of copyNatAdaptersIntoProject ${param.uicomp}" />
+      </antcall>
+	</target>
+
+	
+	<target name="-deleteNatDirectory" if="natural.ant.ajax.njx.deploy.as.war.internal">
+	  <delete dir="${natural.ant.ajax.project.rootdir.active}/${natural.ant.ajax.web.context.active}.tmp/${param.uicomp}/nat"/>
+	</target>
+
+	
+	<target name="-compileJavaClasses.check">
+      <condition property="-compileJavaClasses.yes" value="yes">
+        <and>
+          <equals arg1="${natural.ant.ajax.project.compile.java.sources}" arg2="YES"/>
+          <available file="${natural.ant.ajax.project.rootdir.active}/${natural.ant.ajax.web.context.active}.tmp/${param.uicomp}/src" type="dir"/>
+        </and>
+      </condition>
+	</target>
+	
+	
+    <target name="-compileJavaClasses" depends="-compileJavaClasses.check" if="-compileJavaClasses.yes">
+      <!-- compile all Java files in src directory and put classes into appclasses/classes -->
+      <antcall target="-printTimestamp">
+        <param name="message" value="start of compileJavaClasses ${param.uicomp}" />
+      </antcall>
+      <echo message="INFO: Compiling Java classes from: ${param.uicomp}/src"/>     
+      <mkdir dir="${natural.ant.ajax.project.rootdir.active}/${natural.ant.ajax.web.context.active}.tmp/${param.uicomp}/appclasses/classes"/>
+      <javac srcdir="${natural.ant.ajax.project.rootdir.active}/${natural.ant.ajax.web.context.active}.tmp/${param.uicomp}/src"
+    	     destdir="${natural.ant.ajax.project.rootdir.active}/${natural.ant.ajax.web.context.active}.tmp/${param.uicomp}/appclasses/classes"
+      	     includeantruntime="false"
+      	     failonerror="${natural.ant.ajax.failonerror.internal}"
+      	     nowarn="on">
+      	 <classpath>
+            <pathelement path="${natural.ant.ajax.project.rootdir.active}/${natural.ant.ajax.web.context.active}.tmp/${param.uicomp}/appclasses/classes"/>
+            <path refid="cis.classpath"/>
+      	 </classpath>
+      </javac>
+      <antcall target="-printTimestamp">
+        <param name="message" value="end of compileJavaClasses ${param.uicomp}" />
+      </antcall>
+    </target>
+
+	
+	<target name="-packageUIcomp">
+      <!-- package a ui component into the web application -->
+      <antcall target="-printTimestamp">
+	    <param name="message" value="start of copyUIcomp ${param.uicomp}" />
+	  </antcall>
+      <antcall target="-copyUIcomp">
+        <param name="param.uicomp" value="${param.uicomp}"/>
+      </antcall>
+      <antcall target="-printTimestamp">
+        <param name="message" value="end of copyUIcomp ${param.uicomp}" />
+      </antcall>
+	  <antcall target="-printTimestamp">
+	    <param name="message" value="start of generateUIcomp ${param.uicomp}" />
+	  </antcall>
+      <antcall target="-generateUIcomp">
+        <param name="param.uicomp" value="${param.uicomp}"/>
+      </antcall>
+      <antcall target="-printTimestamp">
+        <param name="message" value="end of generateUIcomp ${param.uicomp}" />
+      </antcall>
+    </target>
+
+
+    <target name="-packageUIcomp01" if="natural.ant.ajax.project.uicomp01">
+      <antcall target="-packageUIcomp">
+        <param name="param.uicomp" value="${natural.ant.ajax.project.uicomp01}"/>
+      </antcall>
+    </target>
+
+
+    <target name="-packageUIcomp02" if="natural.ant.ajax.project.uicomp02">
+      <antcall target="-packageUIcomp">
+        <param name="param.uicomp" value="${natural.ant.ajax.project.uicomp02}"/>
+      </antcall>
+    </target>
+
+
+    <target name="-packageUIcomp03" if="natural.ant.ajax.project.uicomp03">
+      <antcall target="-packageUIcomp">
+        <param name="param.uicomp" value="${natural.ant.ajax.project.uicomp03}"/>
+      </antcall>
+    </target>
+
+
+    <target name="-packageUIcomp04" if="natural.ant.ajax.project.uicomp04">
+      <antcall target="-packageUIcomp">
+        <param name="param.uicomp" value="${natural.ant.ajax.project.uicomp04}"/>
+      </antcall>
+    </target>
+
+
+    <target name="-packageUIcomp05" if="natural.ant.ajax.project.uicomp05">
+      <antcall target="-packageUIcomp">
+        <param name="param.uicomp" value="${natural.ant.ajax.project.uicomp05}"/>
+      </antcall>
+    </target>
+
+
+    <target name="-packageUIcomp06" if="natural.ant.ajax.project.uicomp06">
+      <antcall target="-packageUIcomp">
+        <param name="param.uicomp" value="${natural.ant.ajax.project.uicomp06}"/>
+      </antcall>
+    </target>
+
+    <target name="-packageUIcomp07" if="natural.ant.ajax.project.uicomp07">
+      <antcall target="-packageUIcomp">
+        <param name="param.uicomp" value="${natural.ant.ajax.project.uicomp07}"/>
+      </antcall>
+    </target>
+
+
+    <target name="-packageUIcomp08" if="natural.ant.ajax.project.uicomp08">
+      <antcall target="-packageUIcomp">
+        <param name="param.uicomp" value="${natural.ant.ajax.project.uicomp08}"/>
+      </antcall>
+    </target>
+
+
+    <target name="-packageUIcomp09" if="natural.ant.ajax.project.uicomp09">
+      <antcall target="-packageUIcomp">
+        <param name="param.uicomp" value="${natural.ant.ajax.project.uicomp09}"/>
+      </antcall>
+    </target>
+	
+
+    <target name="-packageUIcomp10" if="natural.ant.ajax.project.uicomp10">
+      <antcall target="-packageUIcomp">
+        <param name="param.uicomp" value="${natural.ant.ajax.project.uicomp10}"/>
+      </antcall>
+    </target>
+    
+
+    <target name="-packageUIcomp11" if="natural.ant.ajax.project.uicomp11">
+      <antcall target="-packageUIcomp">
+        <param name="param.uicomp" value="${natural.ant.ajax.project.uicomp11}"/>
+      </antcall>
+    </target>
+    
+
+    <target name="-packageUIcomp12" if="natural.ant.ajax.project.uicomp12">
+      <antcall target="-packageUIcomp">
+        <param name="param.uicomp" value="${natural.ant.ajax.project.uicomp12}"/>
+      </antcall>
+    </target>
+    
+
+    <target name="-packageUIcomp13" if="natural.ant.ajax.project.uicomp13">
+      <antcall target="-packageUIcomp">
+        <param name="param.uicomp" value="${natural.ant.ajax.project.uicomp13}"/>
+      </antcall>
+    </target>
+    
+
+    <target name="-packageUIcomp14" if="natural.ant.ajax.project.uicomp14">
+      <antcall target="-packageUIcomp">
+        <param name="param.uicomp" value="${natural.ant.ajax.project.uicomp14}"/>
+      </antcall>
+    </target>
+
+	
+    <target name="-packageUIcomp15" if="natural.ant.ajax.project.uicomp15">
+      <antcall target="-packageUIcomp">
+        <param name="param.uicomp" value="${natural.ant.ajax.project.uicomp15}"/>
+      </antcall>
+    </target>
+
+
+    <target name="-packageUIcomp16" if="natural.ant.ajax.project.uicomp16">
+      <antcall target="-packageUIcomp">
+        <param name="param.uicomp" value="${natural.ant.ajax.project.uicomp16}"/>
+      </antcall>
+    </target>
+
+
+    <target name="-packageUIcomp17" if="natural.ant.ajax.project.uicomp17">
+      <antcall target="-packageUIcomp">
+        <param name="param.uicomp" value="${natural.ant.ajax.project.uicomp17}"/>
+      </antcall>
+    </target>
+
+
+    <target name="-packageUIcomp18" if="natural.ant.ajax.project.uicomp18">
+      <antcall target="-packageUIcomp">
+        <param name="param.uicomp" value="${natural.ant.ajax.project.uicomp18}"/>
+      </antcall>
+    </target>
+
+
+    <target name="-packageUIcomp19" if="natural.ant.ajax.project.uicomp19">
+      <antcall target="-packageUIcomp">
+        <param name="param.uicomp" value="${natural.ant.ajax.project.uicomp19}"/>
+      </antcall>
+    </target>
+
+
+    <target name="-packageUIcomp20" if="natural.ant.ajax.project.uicomp20">
+      <antcall target="-packageUIcomp">
+        <param name="param.uicomp" value="${natural.ant.ajax.project.uicomp20}"/>
+      </antcall>
+    </target>
+
+
+    <target name="-packageUIcomp21" if="natural.ant.ajax.project.uicomp21">
+      <antcall target="-packageUIcomp">
+        <param name="param.uicomp" value="${natural.ant.ajax.project.uicomp21}"/>
+      </antcall>
+    </target>
+
+
+    <target name="-packageUIcomp22" if="natural.ant.ajax.project.uicomp22">
+      <antcall target="-packageUIcomp">
+        <param name="param.uicomp" value="${natural.ant.ajax.project.uicomp22}"/>
+      </antcall>
+    </target>
+
+
+    <target name="-packageUIcomp23" if="natural.ant.ajax.project.uicomp23">
+      <antcall target="-packageUIcomp">
+        <param name="param.uicomp" value="${natural.ant.ajax.project.uicomp23}"/>
+      </antcall>
+    </target>
+
+
+    <target name="-packageUIcomp24" if="natural.ant.ajax.project.uicomp24">
+      <antcall target="-packageUIcomp">
+        <param name="param.uicomp" value="${natural.ant.ajax.project.uicomp24}"/>
+      </antcall>
+    </target>
+
+
+    <target name="-packageUIcomp25" if="natural.ant.ajax.project.uicomp25">
+      <antcall target="-packageUIcomp">
+        <param name="param.uicomp" value="${natural.ant.ajax.project.uicomp25}"/>
+      </antcall>
+    </target>
+
+
+	<target name="-copyLicense.check">
+      <!-- check if a license file was specified and is available -->
+      <available file="${natural.ant.ajax.njx.licensefile}" type="file"
+                 property="-copyLicense.exists"/>
+      <echo message="INFO: License file: ${natural.ant.ajax.njx.licensefile}"/>
+    </target>
+
+
+    <target name="-copyLicense" depends="-copyLicense.check" if="-copyLicense.exists">
+      <!-- copy the license file into the corresponding directory -->
+      <copy file="${natural.ant.ajax.njx.licensefile}"
+            todir="${natural.ant.ajax.project.rootdir.active}/${natural.ant.ajax.web.context.active}.tmp/cis/licensekey"
+            overwrite="true"/>
+    </target>
+
+
+    <target name="-createRootFiles.check">
+      <!-- here we expect to find the files to be copied into the root directory -->
+      <property name="root" value="${webconfig}\\root"/>
+        <condition property="-createRootFiles.exists">
+          <and>
+            <available file="${natural.ant.ajax.project.rootdir.active}/${natural.ant.ajax.project.name}/${root}" type="dir"/>
+          </and>
+        </condition>
+    </target>
+
+
+    <target name="-createRootFiles" depends="-createRootFiles.check" if="-createRootFiles.exists">
+      <!-- replace variables in the files and copy them to the root of the web app -->
+      <antcall target="-printTimestamp">
+        <param name="message" value="start of createRootFiles" />
+      </antcall>
+      <mkdir dir="${natural.ant.ajax.project.rootdir.active}/${natural.ant.ajax.project.name}/${root}.tmp"/>
+      <copy todir="${natural.ant.ajax.project.rootdir.active}/${natural.ant.ajax.project.name}/${root}.tmp">
+        <fileset dir="${natural.ant.ajax.project.rootdir.active}/${natural.ant.ajax.project.name}/${root}"/>
+      </copy>
+
+	  <replace dir="${natural.ant.ajax.project.rootdir.active}/${natural.ant.ajax.project.name}/${root}.tmp"
+               token="##natural.ant.ajax.project.description##" value="${natural.ant.ajax.project.description}"/>
+  	  <replace dir="${natural.ant.ajax.project.rootdir.active}/${natural.ant.ajax.project.name}/${root}.tmp"
+               token="##natural.ant.ajax.web.context##" value="${natural.ant.ajax.web.context.active}"/>
+
+      <echo message="INFO: Copying files from '${root}' to the root directory."/>
+      <copy todir="${natural.ant.ajax.project.rootdir.active}/${natural.ant.ajax.web.context.active}.tmp"
+            overwrite="true">
+        <fileset dir="${natural.ant.ajax.project.rootdir.active}/${natural.ant.ajax.project.name}/${root}.tmp"/>
+      </copy>
+      <delete dir="${natural.ant.ajax.project.rootdir.active}/${natural.ant.ajax.project.name}/${root}.tmp"/>
+      <antcall target="-printTimestamp">
+        <param name="message" value="end of createRootFiles" />
+      </antcall>
+    </target>
+
+
+    <target name="-createResourcesFiles.check">
+      <!-- here we expect to find the files to be copied into the resources directory -->
+      <property name="resources" value="${webconfig}\\resources"/>
+        <condition property="-createResourcesFiles.exists">
+          <and>
+            <available file="${natural.ant.ajax.project.rootdir.active}/${natural.ant.ajax.project.name}/${resources}" type="dir"/>
+          </and>
+        </condition>
+    </target>
+
+
+    <target name="-createResourcesFiles" depends="-createResourcesFiles.check" if="-createResourcesFiles.exists">
+      <!-- replace variables in the files and copy them to the resources directory -->
+      <antcall target="-printTimestamp">
+        <param name="message" value="start of createResourcesFiles" />
+      </antcall>
+      <mkdir dir="${natural.ant.ajax.project.rootdir.active}/${natural.ant.ajax.project.name}/${resources}.tmp"/>
+      <copy todir="${natural.ant.ajax.project.rootdir.active}/${natural.ant.ajax.project.name}/${resources}.tmp">
+        <fileset dir="${natural.ant.ajax.project.rootdir.active}/${natural.ant.ajax.project.name}/${resources}"/>
+      </copy>
+
+      <echo message="INFO: Copying files from '${resources}' to the resources directory."/>
+      <copy todir="${natural.ant.ajax.project.rootdir.active}/${natural.ant.ajax.web.context.active}.tmp/resources"
+            overwrite="true">
+        <fileset dir="${natural.ant.ajax.project.rootdir.active}/${natural.ant.ajax.project.name}/${resources}.tmp"/>
+      </copy>
+      <delete dir="${natural.ant.ajax.project.rootdir.active}/${natural.ant.ajax.project.name}/${resources}.tmp"/>
+      <antcall target="-printTimestamp">
+        <param name="message" value="end of createResourcesFiles" />
+      </antcall>
+    </target>
+
+
+    <target name="-createWebinfFiles.check">
+      <!-- here we expect to find the files to be copied into the WEB-INF directory -->
+      <property name="webinf" value="${webconfig}\\web-inf"/>
+        <condition property="-createWebinfFiles.exists">
+          <and>
+            <available file="${natural.ant.ajax.project.rootdir.active}/${natural.ant.ajax.project.name}/${webinf}" type="dir"/>
+          </and>
+        </condition>
+        <!-- check for existence of further app server specific files to be copied -->
+        <condition property="-createWebinfAppServerFiles.exists">
+          <and>
+          	<isset property="natural.ant.ajax.appserver"/>
+          	<not>
+          		<equals arg1="${natural.ant.ajax.appserver}" arg2=""/>
+          	</not>
+            <available file="${natural.ant.ajax.project.rootdir.active}/${natural.ant.ajax.project.name}/${webinf}/${natural.ant.ajax.appserver}" type="dir"/>
+          </and>
+        </condition>
+    </target>
+
+	
+    <target name="-createWebinfFiles" depends="-createWebinfFiles.check" if="-createWebinfFiles.exists">
+      <!-- copy files to the WEB-INF directory -->
+      <antcall target="-printTimestamp">
+        <param name="message" value="start of createWebinfFiles" />
+      </antcall>
+
+      <mkdir dir="${natural.ant.ajax.project.rootdir.active}/${natural.ant.ajax.project.name}/${webinf}.tmp"/>
+      <copy todir="${natural.ant.ajax.project.rootdir.active}/${natural.ant.ajax.project.name}/${webinf}.tmp">
+        <fileset dir="${natural.ant.ajax.project.rootdir.active}/${natural.ant.ajax.project.name}/${webinf}">
+        	<include name="*"/>
+        	<type type="file"/>
+        </fileset>
+      </copy>
+      <!-- copy app server specific files to the WEB-INF directory -->
+      <copy todir="${natural.ant.ajax.project.rootdir.active}/${natural.ant.ajax.project.name}/${webinf}.tmp" 
+     	    overwrite="true"
+            flatten="true">
+        <fileset dir="${natural.ant.ajax.project.rootdir.active}/${natural.ant.ajax.project.name}/${webinf}">
+          	<include name="${natural.ant.ajax.appserver}/*" if="-createWebinfAppServerFiles.exists" />
+          	<type type="file"/>
+        </fileset>
+      </copy>
+
+      <!-- replace variables in the files in the WEB-INF directory -->
+      <replace dir="${natural.ant.ajax.project.rootdir.active}/${natural.ant.ajax.project.name}/${webinf}.tmp"
+               token="##natural.ant.ajax.project.description##" value="${natural.ant.ajax.project.description}"/>
+      <replace dir="${natural.ant.ajax.project.rootdir.active}/${natural.ant.ajax.project.name}/${webinf}.tmp"
+               token="##natural.ant.ajax.web.context##" value="${natural.ant.ajax.web.context.active}"/>
+      <replace dir="${natural.ant.ajax.project.rootdir.active}/${natural.ant.ajax.project.name}/${webinf}.tmp"
+               token="##natural.ant.ajax.session.nwohost##" value="${natural.ant.ajax.session.nwohost}"/>
+      <replace dir="${natural.ant.ajax.project.rootdir.active}/${natural.ant.ajax.project.name}/${webinf}.tmp"
+               token="##natural.ant.ajax.session.nwoport##" value="${natural.ant.ajax.session.nwoport}"/>
+      <replace dir="${natural.ant.ajax.project.rootdir.active}/${natural.ant.ajax.project.name}/${webinf}.tmp"
+               token="##natural.ant.ajax.session.nwoapp##" value="${natural.ant.ajax.session.nwoapp}"/>
+      <replace dir="${natural.ant.ajax.project.rootdir.active}/${natural.ant.ajax.project.name}/${webinf}.tmp"
+               token="##natural.ant.ajax.session.nwoparms##" value="${natural.ant.ajax.session.nwoparms}"/>
+
+      <echo message="INFO: Copying files from '${webinf}' to the WEB-INF directory."/>
+      <copy todir="${natural.ant.ajax.project.rootdir.active}/${natural.ant.ajax.web.context.active}.tmp/WEB-INF"
+            overwrite="true">
+        <fileset dir="${natural.ant.ajax.project.rootdir.active}/${natural.ant.ajax.project.name}/${webinf}.tmp"/>
+      </copy>
+      <delete dir="${natural.ant.ajax.project.rootdir.active}/${natural.ant.ajax.project.name}/${webinf}.tmp"/>
+      <antcall target="-printTimestamp">
+        <param name="message" value="end of createWebinfFiles" />
+      </antcall>    	
+    </target>
+
+		
+	<target name="-processAppServerTomcat" if="natural.ant.ajax.appserver.tomcat">
+	    <!--  do application server specific actions -->		
+	</target>
+
+		<target name="-processAppServerWebsphere" if="natural.ant.ajax.appserver.websphere">
+	    <!--  do application server specific actions -->		
+        <!-- delete connector-api.jar for websphere. WSAS has it's own connector-api implementation -->
+		<delete file="${natural.ant.ajax.project.rootdir.active}/${natural.ant.ajax.web.context.active}.tmp/WEB-INF/lib/connector-api.jar" />    
+	</target>
+
+	<target name="-processAppServerJboss7" if="natural.ant.ajax.appserver.jboss7">
+	    <!--  do application server specific actions -->
+	    <!-- modify faces-config.xml - not required anymore -->
+		<!-- Remove what is not needed in the JBoss 7 distribution -->
+        <delete file="${natural.ant.ajax.project.rootdir.active}/${natural.ant.ajax.web.context.active}.tmp/WEB-INF/njxnwo-login-config.xml"/>
+        <delete file="${natural.ant.ajax.project.rootdir.active}/${natural.ant.ajax.web.context.active}.tmp/WEB-INF/njxnwo-login-config-service.xml"/>
+        <delete file="${natural.ant.ajax.project.rootdir.active}/${natural.ant.ajax.web.context.active}.tmp/WEB-INF/njxnwo-roles.properties"/>
+        <delete file="${natural.ant.ajax.project.rootdir.active}/${natural.ant.ajax.web.context.active}.tmp/WEB-INF/njxnwo-users.properties"/>
+        <delete file="${natural.ant.ajax.project.rootdir.active}/${natural.ant.ajax.web.context.active}.tmp/WEB-INF/lib/gf.javax.faces-2.2.0.jar"/>
+	    <delete file="${natural.ant.ajax.project.rootdir.active}/${natural.ant.ajax.web.context.active}.tmp/WEB-INF/lib/gf.javax.resource-1.6.jar.jar"/>
+	    <delete file="${natural.ant.ajax.project.rootdir.active}/${natural.ant.ajax.web.context.active}.tmp/WEB-INF/lib/gf.javax.servlet.jsp.jstl-api-1.2.1.jar"/>
+	</target>
+	
+	<target name="-processAppServerJboss8" if="natural.ant.ajax.appserver.jboss8">
+		 <!--  do application server specific actions -->
+		 <!-- modify faces-config.xml - not required anymore -->
+		 <!-- Remove what is not needed in the JBoss 8 distribution -->
+		 <delete file="${natural.ant.ajax.project.rootdir.active}/${natural.ant.ajax.web.context.active}.tmp/WEB-INF/njxnwo-login-config.xml"/>
+		 <delete file="${natural.ant.ajax.project.rootdir.active}/${natural.ant.ajax.web.context.active}.tmp/WEB-INF/njxnwo-login-config-service.xml"/>
+		 <delete file="${natural.ant.ajax.project.rootdir.active}/${natural.ant.ajax.web.context.active}.tmp/WEB-INF/njxnwo-roles.properties"/>
+		 <delete file="${natural.ant.ajax.project.rootdir.active}/${natural.ant.ajax.web.context.active}.tmp/WEB-INF/njxnwo-users.properties"/>
+		 <delete file="${natural.ant.ajax.project.rootdir.active}/${natural.ant.ajax.web.context.active}.tmp/WEB-INF/lib/gf.javax.faces-2.2.0.jar"/>
+		 <delete file="${natural.ant.ajax.project.rootdir.active}/${natural.ant.ajax.web.context.active}.tmp/WEB-INF/lib/gf.javax.resource-1.6.jar.jar"/>
+		 <delete file="${natural.ant.ajax.project.rootdir.active}/${natural.ant.ajax.web.context.active}.tmp/WEB-INF/lib/gf.javax.servlet.jsp.jstl-api-1.2.1.jar"/>
+	</target>
+
+	<target name="-processBuild" depends="-processBuildWar,-processBuildExport">
+	      <!--  distinguish between WAR file build and Export -->
+    </target>
+
+	
+	<target name="-processBuildWar" if="natural.ant.ajax.njx.deploy.as.war.internal">
+      <!-- copy the delivered njx kit to the working directory and rename it -->
+      <antcall target="-printTimestamp">
+        <param name="message" value="start of copy njx kit" />
+      </antcall>
+      <copy file="${natural.ant.ajax.njx.application}"
+            tofile="${natural.ant.ajax.project.rootdir.active}/${natural.ant.ajax.project.name}/${natural.ant.ajax.web.context.active}.war"
+            overwrite="true"/>
+      <antcall target="-printTimestamp">
+        <param name="message" value="end of copy njx kit" />
+      </antcall>
+
+      <!-- 'unwar' it into a temporary directory -->
+      <antcall target="-printTimestamp">
+        <param name="message" value="start of unzip war file" />
+      </antcall>
+      <mkdir dir="${natural.ant.ajax.project.rootdir.active}/${natural.ant.ajax.web.context.active}.tmp"/>
+      <unzip src="${natural.ant.ajax.project.rootdir.active}/${natural.ant.ajax.project.name}/${natural.ant.ajax.web.context.active}.war"
+             dest="${natural.ant.ajax.project.rootdir.active}/${natural.ant.ajax.web.context.active}.tmp"/>
+      <antcall target="-printTimestamp">
+        <param name="message" value="end of unzip war file" />
+      </antcall>
+
+      <!-- remove what is not needed in the user application -->
+      <delete dir="${natural.ant.ajax.project.rootdir.active}/${natural.ant.ajax.web.context.active}.tmp/njxmapconverter"/>
+      <delete dir="${natural.ant.ajax.project.rootdir.active}/${natural.ant.ajax.web.context.active}.tmp/njxdemos"/>
+	  <delete file="${natural.ant.ajax.project.rootdir.active}/${natural.ant.ajax.web.context.active}.tmp/cisjavadoc.zip"/>	
+      <delete file="${natural.ant.ajax.project.rootdir.active}/${natural.ant.ajax.web.context.active}.tmp/WEB-INF/lib/cis_xci.jar"/>
+      <delete>
+        <fileset dir="${natural.ant.ajax.project.rootdir.active}/${natural.ant.ajax.web.context.active}.tmp/META-INF" includes="**/*.RSA"/>
+        <fileset dir="${natural.ant.ajax.project.rootdir.active}/${natural.ant.ajax.web.context.active}.tmp/META-INF" includes="**/*.SF"/>
+      </delete>
+
+      <!-- package up to nine components into the web application -->
+      <!-- ant is not really good in iterating -->
+      <antcall target="-packageUIcomp01"/>
+      <antcall target="-packageUIcomp02"/>
+      <antcall target="-packageUIcomp03"/>
+      <antcall target="-packageUIcomp04"/>
+      <antcall target="-packageUIcomp05"/>
+      <antcall target="-packageUIcomp06"/>
+      <antcall target="-packageUIcomp07"/>
+      <antcall target="-packageUIcomp08"/>
+      <antcall target="-packageUIcomp09"/>
+      <antcall target="-packageUIcomp10"/>
+      <antcall target="-packageUIcomp11"/>
+      <antcall target="-packageUIcomp12"/>
+      <antcall target="-packageUIcomp13"/>
+      <antcall target="-packageUIcomp14"/>
+      <antcall target="-packageUIcomp15"/>
+      <antcall target="-packageUIcomp16"/>
+	  <antcall target="-packageUIcomp17"/>
+      <antcall target="-packageUIcomp18"/>
+      <antcall target="-packageUIcomp19"/>
+      <antcall target="-packageUIcomp20"/>
+      <antcall target="-packageUIcomp21"/>
+      <antcall target="-packageUIcomp22"/>
+      <antcall target="-packageUIcomp23"/>
+      <antcall target="-packageUIcomp24"/>
+      <antcall target="-packageUIcomp25"/>
+
+      <!-- insert the runtime license file -->
+      <antcall target="-copyLicense"/>
+
+      <!-- here we expect to find additional files to be deployed -->
+      <property name="webconfig" value="webconfig"/>
+      <!-- deploy files into the root directory -->
+      <antcall target="-createRootFiles"/>
+      <!-- deploy files into the resources directory -->
+      <antcall target="-createResourcesFiles"/>
+      <!-- deploy files into the WEB-INF directory -->
+      <antcall target="-createWebinfFiles"/>
+
+      <!-- do app server specific actions -->
+      <antcall target="-processAppServerTomcat"/>
+      <antcall target="-processAppServerWebsphere"/>
+      <antcall target="-processAppServerJboss7"/>
+	  <antcall target="-processAppServerJboss8"/>
+
+      <!-- 'war' it back to a web application -->
+      <antcall target="-printTimestamp">
+        <param name="message" value="start of zip war file" />
+      </antcall>
+      <zip encoding="UTF8" 
+      	   destfile="${natural.ant.ajax.project.rootdir.active}/${natural.ant.ajax.project.name}/${natural.ant.ajax.web.context.active}.war"
+           basedir="${natural.ant.ajax.project.rootdir.active}/${natural.ant.ajax.web.context.active}.tmp"/>
+
+      <antcall target="-printTimestamp">
+        <param name="message" value="end of zip war file" />
+      </antcall>
+      <!-- remove the temporary directory -->
+      <antcall target="-printTimestamp">
+        <param name="message" value="start of delete directory" />
+      </antcall>
+      <delete dir="${natural.ant.ajax.project.rootdir.active}/${natural.ant.ajax.web.context.active}.tmp"/>
+	  <antcall target="-printTimestamp">
+	    <param name="message" value="end of delete directory" />
+	  </antcall>
+    </target>
+	
+	
+	<target name="-processBuildExport" unless="natural.ant.ajax.njx.deploy.as.war.internal">
+      <!-- create a temporary working directory -->
+      <mkdir dir="${natural.ant.ajax.project.rootdir.active}/${natural.ant.ajax.web.context.active}.tmp"/>
+
+      <!-- copy WEB-INF directory from server env to local dir -->
+      <antcall target="-printTimestamp">
+        <param name="message" value="start of copy WEB-INF" />
+      </antcall>
+      <mkdir dir="${natural.ant.ajax.project.rootdir.active}/${natural.ant.ajax.web.context.active}.tmp/WEB-INF"/>
+	  <copy todir="${natural.ant.ajax.project.rootdir.active}/${natural.ant.ajax.web.context.active}.tmp/WEB-INF">
+         <fileset dir="${natural.ant.ajax.njx.application.export}/WEB-INF" erroronmissingdir="false"/>
+	  </copy>
+      <antcall target="-printTimestamp">
+        <param name="message" value="end of copy WEB-INF" />
+      </antcall>
+	  <!-- copy cis directory from server env to local dir -->
+      <antcall target="-printTimestamp">
+        <param name="message" value="start of copy cis" />
+      </antcall>
+	  <mkdir dir="${natural.ant.ajax.project.rootdir.active}/${natural.ant.ajax.web.context.active}.tmp/cis"/>
+	  <copy todir="${natural.ant.ajax.project.rootdir.active}/${natural.ant.ajax.web.context.active}.tmp/cis">
+         <fileset dir="${natural.ant.ajax.njx.application.export}/cis"  erroronmissingdir="false"/>
+	  </copy>
+      <antcall target="-printTimestamp">
+        <param name="message" value="end of copy cis" />
+      </antcall>
+		
+	  <!-- package up to nine components into the web application -->
+      <!-- ant is not really good in iterating -->
+      <antcall target="-packageUIcomp01"/>
+      <antcall target="-packageUIcomp02"/>
+      <antcall target="-packageUIcomp03"/>
+      <antcall target="-packageUIcomp04"/>
+      <antcall target="-packageUIcomp05"/>
+      <antcall target="-packageUIcomp06"/>
+      <antcall target="-packageUIcomp07"/>
+      <antcall target="-packageUIcomp08"/>
+      <antcall target="-packageUIcomp09"/>
+      <antcall target="-packageUIcomp10"/>
+      <antcall target="-packageUIcomp11"/>
+      <antcall target="-packageUIcomp12"/>
+      <antcall target="-packageUIcomp13"/>
+      <antcall target="-packageUIcomp14"/>
+      <antcall target="-packageUIcomp15"/>
+      <antcall target="-packageUIcomp16"/>
+      <antcall target="-packageUIcomp17"/>
+      <antcall target="-packageUIcomp18"/>
+      <antcall target="-packageUIcomp19"/>
+      <antcall target="-packageUIcomp20"/>
+      <antcall target="-packageUIcomp21"/>
+      <antcall target="-packageUIcomp22"/> 
+      <antcall target="-packageUIcomp23"/>
+      <antcall target="-packageUIcomp24"/>
+      <antcall target="-packageUIcomp25"/>
+
+      <!-- here we expect to find additional files to be deployed -->
+      <!-- <property name="webconfig" value="webconfig"/> -->
+      <!-- deploy files into the root directory -->
+      <!-- <antcall target="-createRootFiles"/> -->
+      <!-- deploy files into the resources directory -->
+      <!-- <antcall target="-createResourcesFiles"/> -->
+      <!-- deploy files into the WEB-INF directory -->
+      <!-- <antcall target="-createWebinfFiles"/> -->
+
+	  <!-- delete WEB-INF directory from local dir -->
+      <delete dir="${natural.ant.ajax.project.rootdir.active}/${natural.ant.ajax.web.context.active}.tmp/WEB-INF"/>
+      <!-- delete cis directory from local dir -->
+      <delete dir="${natural.ant.ajax.project.rootdir.active}/${natural.ant.ajax.web.context.active}.tmp/cis"/>
+      <!-- copy content of temporary directory to destination directory -->
+      <antcall target="-printTimestamp">
+        <param name="message" value="start of copy to destination" />
+      </antcall>
+	  <mkdir dir="${natural.ant.ajax.njx.application.export}"/>
+	  <copy todir="${natural.ant.ajax.njx.application.export}" overwrite="true">
+	  	<fileset dir="${natural.ant.ajax.project.rootdir.active}/${natural.ant.ajax.web.context.active}.tmp"/>
+	  </copy>
+      <antcall target="-printTimestamp">
+        <param name="message" value="end of copy to destination" />
+      </antcall>
+      <!-- remove the temporary directory -->
+      <antcall target="-printTimestamp">
+        <param name="message" value="start of delete directory" />
+      </antcall>
+      <delete dir="${natural.ant.ajax.project.rootdir.active}/${natural.ant.ajax.web.context.active}.tmp"/>
+      <antcall target="-printTimestamp">
+        <param name="message" value="end of delete directory" />
+      </antcall>
+    </target>
+    
+</project>

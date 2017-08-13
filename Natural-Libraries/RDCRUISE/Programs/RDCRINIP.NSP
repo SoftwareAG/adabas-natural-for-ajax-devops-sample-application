@@ -1,0 +1,211 @@
+* >Natural Source Header 000000
+* :Mode S
+* :CP
+* <Natural Source Header
+/** New Program RESINIGP.
+/**
+/** :author sagadmin
+/* TODO Enter your code here
+DEFINE DATA GLOBAL
+  USING RDCCRUIS
+LOCAL
+1 P-HOMEDESCRIPTION (A) DYNAMIC
+1 P-HOMEDESCRIPTION1B (A) DYNAMIC
+1 P-HOMEDESCRIPTION2B (A) DYNAMIC
+1 P-DEHOMESCRIPTION3B (A) DYNAMIC
+*
+1 P-ISLANDTXT1 (A) DYNAMIC
+1 P-ISLANDTXT2 (A) DYNAMIC
+1 P-ISLANDTXT3 (A) DYNAMIC
+1 P-ISLANDTXT4 (A) DYNAMIC
+*
+1 P-LANGUAGE (N2)
+END-DEFINE
+*
+MOVE G-LANGUAGE TO P-LANGUAGE
+CALLNAT 'RDREADWN' 
+  P-HOMEDESCRIPTION
+  P-HOMEDESCRIPTION1B
+  P-HOMEDESCRIPTION2B
+  P-DEHOMESCRIPTION3B
+  P-ISLANDTXT1
+  P-ISLANDTXT2
+  P-ISLANDTXT3
+  P-ISLANDTXT4
+  P-LANGUAGE
+*
+MOVE P-HOMEDESCRIPTION   TO    G-HOMEDESCRIPTION
+MOVE P-HOMEDESCRIPTION1B TO    G-HOMEDESCRIPTION1B
+MOVE P-HOMEDESCRIPTION2B TO    G-HOMEDESCRIPTION2B
+MOVE P-DEHOMESCRIPTION3B TO    G-HOMEDESCRIPTION3B
+*
+COMPRESS  P-ISLANDTXT1 INTO G-ISLANDTXT1
+COMPRESS  P-ISLANDTXT2 INTO G-ISLANDTXT2
+COMPRESS  P-ISLANDTXT3 INTO G-ISLANDTXT3
+COMPRESS  P-ISLANDTXT4 INTO G-ISLANDTXT4
+*
+EXPAND ARRAY G-MENUITEM TO (1:7)
+DECIDE ON FIRST VALUE OF G-LANGUAGE 
+  VALUE  2    /* german
+    MOVE 'Home'            TO G-MENUITEM (1)   
+    MOVE 'Reiseangebote'   TO G-MENUITEM (2)
+    MOVE 'Inselfavoriten'  TO G-MENUITEM (3)
+    MOVE 'Alle Reisen'     TO G-MENUITEM (4)
+    MOVE '?'               TO G-MENUITEM (5)
+    MOVE 'Exit'            TO G-MENUITEM (6)    
+    MOVE ', Willkommen, Sie sind angemeldet' TO G-LOGINSTATUSMSG
+    MOVE ', Ihre Kundendaten wurden erfolgreich geändert' TO G-CHANGELOGINSTATUSMSG
+    MOVE 'Ihre Vertragnr ist: ' TO G-CONTRACTSTOREMSG
+    MOVE 'Willkommen neuer Kunde' TO G-NEWLOGINSTATUSMSG
+    MOVE 'Schliessen'      TO G-BUTTONS.G-CLOSEBUTTEXT
+    MOVE 'Schliessen'      TO G-BUTTONS.G-EXITBUTTEXT
+    MOVE 'Anmelden'        TO G-BUTTONS.G-SIGNINBUTTEXT
+
+    MOVE 'Geburtstag'      TO  G-MYBIRTHDATELABELPROP 
+    MOVE 'Stadt'           TO  G-MYCITYLABELPROP 
+    MOVE 'E-Mail'          TO  G-MYEMAILLABELPROP 
+    MOVE 'Nachname'        TO  G-MYNAMELABEPROP
+    MOVE 'Vorname'        TO G-MYFIRSTNAMELABELPROP 
+    MOVE 'Straße'         TO G-MYSTREETLABELPROP
+    MOVE 'PLZ'            TO G-MYZIPLABELPROP
+    MOVE 'Zielhafen'      TO G-CRLABELDETDESTHARBOR 
+    MOVE 'Reiseende'      TO G-CRLABELDETENDDATE 
+    MOVE 'Reisestart'     TO G-CRLABELDETSTARTDATE 
+    MOVE 'Starthafen'      TO G-CRLABELDETSTARTHARBOR 
+    MOVE 'Yacht-Name'     TO G-CRLABELDETYACHTNAME 
+    MOVE 'Reisepreis'          TO G-CRLABELDETPRICE
+    MOVE 'Allgemeine Geschäftsbedingungen' TO G-ADDINFOHEAD1 
+    MOVE 'Versicherungsinformationen'                  TO G-ADDINFOHEAD2 
+    MOVE 'das Wetter in Griechenland'      TO G-ADDINFOHEAD3
+    MOVE 'Impressum'                       TO G-ADDINFOHEAD4 
+    MOVE 'diese Funktion wird noch nicht unterstützt'  TO G-MYDATAALERTTXT
+    MOVE 'Ihre Identifikationsdaten sind unbekannt'  TO G-LOGINALERTTXT 
+    MOVE 'Ein Fehler ist aufgetreten'  TO G-ERRORMSG
+    MOVE './images/RD-homeger.png'   TO G-HOMEPIC
+    MOVE './images/RD-mydatager.png' TO G-MYDATAIMAGE
+    MOVE './images/RD-offersger.png'  TO G-OFFERIMAGE                    
+    MOVE './images/RD-favorger.png'  TO G-FAVORIMAGE                       
+    MOVE './images/RD-alltripsger.png' TO G-ALLTRIPSIMAGE                      
+    MOVE './images/RD-myloginger.png'  TO G-LOGINIMAGE                             
+  VALUE  4   /* spanish
+    MOVE 'Home'                  TO G-MENUITEM (1)
+    MOVE 'viajes especiales'     TO G-MENUITEM (2)
+    MOVE 'nuestros favoritos'    TO G-MENUITEM (3)
+    MOVE 'todos los viajes'      TO G-MENUITEM (4)
+    MOVE '?'                     TO G-MENUITEM (5)
+    MOVE 'salida'                TO G-MENUITEM (6)
+    MOVE ', bienvenidos'   TO G-LOGINSTATUSMSG
+    MOVE 'your customer data has been changed sucessfully' TO G-CHANGELOGINSTATUSMSG
+    MOVE 'your contract has been stored with number: ' TO G-CONTRACTSTOREMSG
+    MOVE 'Concluir'        TO G-BUTTONS.G-CLOSEBUTTEXT
+    MOVE 'Schliessen'      TO G-BUTTONS.G-EXITBUTTEXT
+    MOVE 'Anmelden'        TO G-BUTTONS.G-SIGNINBUTTEXT
+    MOVE './images/RD-homespa.png' TO G-HOMEPIC
+    MOVE 'nacimento'      TO  G-MYBIRTHDATELABELPROP 
+    MOVE 'ciudad'           TO  G-MYCITYLABELPROP 
+    MOVE 'esmalte'          TO  G-MYEMAILLABELPROP 
+    MOVE 'apellido'        TO  G-MYNAMELABEPROP
+    MOVE 'nombre'        TO G-MYFIRSTNAMELABELPROP 
+    MOVE 'calle'         TO G-MYSTREETLABELPROP
+    MOVE 'CE'            TO G-MYZIPLABELPROP
+    MOVE 'Puerto Destino'    TO G-CRLABELDETDESTHARBOR 
+    MOVE 'Fecha Fin'        TO G-CRLABELDETENDDATE 
+    MOVE 'Fecha Initio'     TO G-CRLABELDETSTARTDATE 
+    MOVE 'Puerto Initio'   TO G-CRLABELDETSTARTHARBOR 
+    MOVE 'Nombre Yate'          TO G-CRLABELDETYACHTNAME 
+    MOVE 'Costas'          TO G-CRLABELDETPRICE
+    MOVE 'Condiciones' TO G-ADDINFOHEAD1 
+    MOVE 'información del seguro'                  TO G-ADDINFOHEAD2 
+    MOVE 'el tiempo en Grecia'      TO G-ADDINFOHEAD3
+    MOVE 'huella'                       TO G-ADDINFOHEAD4 
+    MOVE 'esta función aún no es compatible'  TO G-MYDATAALERTTXT
+    MOVE 'Sus datos de identificación son desconocidos'   TO G-LOGINALERTTXT
+    MOVE 'An unexpected error has occured'  TO G-ERRORMSG
+    MOVE './images/RD-mydataspa.png' TO G-MYDATAIMAGE
+    MOVE './images/RD-offersspa.png'  TO G-OFFERIMAGE                    
+    MOVE './images/RD-favorspa.png'  TO G-FAVORIMAGE                       
+    MOVE './images/RD-alltripsspa.png' TO G-ALLTRIPSIMAGE                      
+    MOVE './images/RD-myloginspa.png'  TO G-LOGINIMAGE 
+  VALUE  11  /* portug
+    MOVE 'Home'                TO G-MENUITEM (1)
+    MOVE 'viagens especiais'    TO G-MENUITEM (2)
+    MOVE 'nossos favoritos'     TO G-MENUITEM (3)
+    MOVE 'todas as viagens'     TO G-MENUITEM (4)
+    MOVE '?'                    TO G-MENUITEM (5)
+    MOVE 'saída'                TO G-MENUITEM (6)
+    MOVE ', seja muito bem-vindo' TO G-LOGINSTATUSMSG
+    MOVE 'your customer data has been changed sucessfully' TO G-CHANGELOGINSTATUSMSG
+    MOVE 'your contract has been stored with number ' TO G-CONTRACTSTOREMSG
+    MOVE 'Fechar'          TO G-BUTTONS.G-CLOSEBUTTEXT
+    MOVE 'Schliessen'      TO G-BUTTONS.G-EXITBUTTEXT
+    MOVE 'Anmelden'        TO G-BUTTONS.G-SIGNINBUTTEXT
+    MOVE 'nascimento'      TO  G-MYBIRTHDATELABELPROP 
+    MOVE 'ciudade'         TO  G-MYCITYLABELPROP 
+    MOVE 'esmalte'         TO  G-MYEMAILLABELPROP 
+    MOVE 'apelido'         TO  G-MYNAMELABEPROP
+    MOVE 'nome'            TO G-MYFIRSTNAMELABELPROP 
+    MOVE 'rua'             TO G-MYSTREETLABELPROP
+    MOVE 'CEP'             TO G-MYZIPLABELPROP
+    MOVE 'Porto Destino'   TO G-CRLABELDETDESTHARBOR 
+    MOVE 'Data Fim'        TO G-CRLABELDETENDDATE 
+    MOVE 'Data Lancamento'    TO G-CRLABELDETSTARTDATE 
+    MOVE 'Porto Lancamento'   TO G-CRLABELDETSTARTHARBOR 
+    MOVE 'Nome Iate'          TO G-CRLABELDETYACHTNAME 
+    MOVE 'Custas'          TO G-CRLABELDETPRICE
+    MOVE 'Condições' TO G-ADDINFOHEAD1 
+    MOVE 'informação de seguro'                  TO G-ADDINFOHEAD2 
+    MOVE 'o tempo em Grécia'      TO G-ADDINFOHEAD3
+    MOVE 'cunho'                       TO G-ADDINFOHEAD4 
+    MOVE 'Este recurso ainda não é suportada'       TO G-MYDATAALERTTXT
+    MOVE 'Os seus dados de identificação são desconhecidos' TO G-LOGINALERTTXT
+    MOVE 'An unexpected error has occured'  TO G-ERRORMSG
+    MOVE './images/RD-homepor.png' TO G-HOMEPIC
+    MOVE './images/RD-mydatapor.png' TO G-MYDATAIMAGE
+    MOVE './images/RD-offerspor.png'  TO G-OFFERIMAGE                    
+    MOVE './images/RD-favorpor.png'  TO G-FAVORIMAGE                       
+    MOVE './images/RD-alltripspor.png' TO G-ALLTRIPSIMAGE                      
+    MOVE './images/RD-myloginpor.png'  TO G-LOGINIMAGE 
+  NONE    /* english + else
+    MOVE 'Home'            TO G-MENUITEM (1)
+    MOVE 'Hot Cruises'     TO G-MENUITEM (2)
+    MOVE 'Favorites'       TO G-MENUITEM (3)
+    MOVE 'All Cruises'     TO G-MENUITEM (4)
+    MOVE '?'               TO G-MENUITEM (5)
+    MOVE 'Exit'            TO G-MENUITEM (6)
+*   MOVE ', welcome you are logged in' TO G-LOGINSTATUSMSG
+    MOVE ', welcome' TO G-LOGINSTATUSMSG
+    MOVE 'your customer data has been changed sucessfully' TO G-CHANGELOGINSTATUSMSG
+    MOVE 'your contract has been stored with number ' TO G-CONTRACTSTOREMSG
+    MOVE 'welcome new customer' TO G-NEWLOGINSTATUSMSG
+    MOVE 'Close'        TO G-BUTTONS.G-CLOSEBUTTEXT
+    MOVE 'Close'        TO G-BUTTONS.G-EXITBUTTEXT
+    MOVE 'Sign in'      TO G-BUTTONS.G-SIGNINBUTTEXT
+    MOVE 'Day of Birth' TO  G-MYBIRTHDATELABELPROP 
+    MOVE 'City'         TO  G-MYCITYLABELPROP 
+    MOVE 'E-mail'       TO  G-MYEMAILLABELPROP 
+    MOVE 'Name'         TO  G-MYNAMELABEPROP
+    MOVE 'First Name'   TO  G-MYFIRSTNAMELABELPROP 
+    MOVE 'Street'       TO  G-MYSTREETLABELPROP
+    MOVE 'ZIP'          TO  G-MYZIPLABELPROP
+    MOVE 'Destination Harbor'      TO G-CRLABELDETDESTHARBOR 
+    MOVE 'End Date'                TO G-CRLABELDETENDDATE 
+    MOVE 'Start Date'              TO G-CRLABELDETSTARTDATE 
+    MOVE 'Start Harbor'            TO G-CRLABELDETSTARTHARBOR 
+    MOVE 'Yacht Name'              TO G-CRLABELDETYACHTNAME 
+    MOVE 'Price'                   TO G-CRLABELDETPRICE
+    MOVE 'Terms of Service' TO G-ADDINFOHEAD1 
+    MOVE 'Insurance Information'                  TO G-ADDINFOHEAD2 
+    MOVE 'the Weather in Greece'      TO G-ADDINFOHEAD3
+    MOVE 'Imprint'                       TO G-ADDINFOHEAD4 
+    MOVE 'Function not yet supported'  TO G-MYDATAALERTTXT
+    MOVE 'Identification not known'    TO G-LOGINALERTTXT 
+    MOVE 'An unexpected error has occured'  TO G-ERRORMSG
+    MOVE './images/RD-homeeng.png' TO G-HOMEPIC   
+    MOVE './images/RD-myDataeng.png' TO G-MYDATAIMAGE
+    MOVE './images/RD-offerseng.png'  TO G-OFFERIMAGE                    
+    MOVE './images/RD-favoreng.png'  TO G-FAVORIMAGE                       
+    MOVE './images/RD-alltripseng.png' TO G-ALLTRIPSIMAGE                      
+    MOVE './images/RD-mylogineng.png'  TO G-LOGINIMAGE 
+
+END-DECIDE
+END

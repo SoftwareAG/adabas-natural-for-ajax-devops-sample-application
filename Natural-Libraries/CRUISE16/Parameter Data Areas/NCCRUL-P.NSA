@@ -1,0 +1,32 @@
+DEFINE DATA PARAMETER
+/* >Natural Source Header 000000
+/* :Mode S
+/* :CP
+/* <Natural Source Header
+/** New Parameter Data Area NCCRUL-P.
+/**
+/** :author sagadmin
+/* TODO Enter your data definitions here
+1 P-SELETION                 /*IN
+  2 P-STARTHARBOR (A) DYNAMIC
+  2 P-DESTHARBOR  (A) DYNAMIC
+*
+1 P-NUMBER-OF-RECORDS (P10)    /*OUT 
+1 P-CRUISE-DATA (1:*)       
+  2 CRUISE-ID    (A) DYNAMIC
+  2 CRUISE-START
+    3 START-DATE (A) DYNAMIC
+  2 CRUISE-END
+    3 END-DATE   (A) DYNAMIC
+  2 START-HARBOR (A) DYNAMIC
+  2 DESTINATION-HARBOR (A) DYNAMIC
+  2 YACHT-NAME (A) DYNAMIC
+  2 PRICES
+    3 PRICE-1W (A) DYNAMIC
+    3 PRICE-2W (A) DYNAMIC
+    3 PRICE-3W (A) DYNAMIC
+  2 PRICE (A)      DYNAMIC  /* exercise 04
+  2 PICTURE (B)    DYNAMIC  /* exercise 11
+  2 PICTURELEN (I4)         /* exercise 11 
+
+END-DEFINE

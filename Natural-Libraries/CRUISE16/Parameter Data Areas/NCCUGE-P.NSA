@@ -1,0 +1,31 @@
+DEFINE DATA PARAMETER
+/* >Natural Source Header 000000
+/* :Mode S
+/* :CP
+/* <Natural Source Header
+/** New Parameter Data Area NCCUGE-P.
+/**
+/** :author sagadmin
+/* TODO Enter your data definitions here
+*
+1 P-SELECTION                 /*IN
+  2 P-PERSON-ID (A) DYNAMIC
+  2 P-TIMESTAMP (B8)
+*
+1 P-CUSTOMER-DATA            /*OUT
+  2 PERSON-ID    (A) DYNAMIC
+  2 BIRTH-DATE    (A) DYNAMIC
+  2 SEX    (A) DYNAMIC
+  2 NAME
+    3 SURNAME    (A) DYNAMIC
+    3 FIRST-NAME-OLD (A) DYNAMIC
+  2 ADDRESS
+    3 EMAIL    (A) DYNAMIC 
+    3 STREET-NUMBER    (A) DYNAMIC
+    3 COUNTRY    (A) DYNAMIC
+    3 ZIP-CODE   (A) DYNAMIC
+    3 CITY    (A) DYNAMIC
+  2 TIMESTAMP (B8) 
+  2 FIRST-NAME-1 (U) DYNAMIC
+*
+END-DEFINE

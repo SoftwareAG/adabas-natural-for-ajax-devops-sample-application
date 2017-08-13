@@ -1,0 +1,19 @@
+DEFINE DATA PARAMETER
+/* >Natural Source Header 000000
+/* :Mode S
+/* :CP
+/* <Natural Source Header
+/** New Parameter Data Area NCCONW-P.
+/**
+/** :author sagadmin
+/* TODO Enter your data definitions here
+1 P-CONTRACT-DATA            /*IN
+  2 WEEK-COUNT-IN        (A) DYNAMIC  /* not yet used - all bookings are for one week
+  2 DATE-RESERVATION-IN  (A) DYNAMIC  /* not yet used - no reservation
+  2 DATE-BOOKING-IN      (A) DYNAMIC  /* not yet used - booking date will be determined by service
+  2 ID-CUSTOMER-IN       (A) DYNAMIC
+  2 ID-CRUISE-IN         (A) DYNAMIC
+    
+*         
+1 P-NEW-CONTRACTID  (N8)  /*OUT
+END-DEFINE

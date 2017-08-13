@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- JNLP File for a sample Natural for Ajax application --> 
+<jnlp spec="1.0" codebase="$$codebase" href="$$name">
+   <information>
+      <title>##natural.ant.ajax.project.description##</title>
+      <vendor>##natural.ant.ajax.project.description##</vendor>
+   </information>
+   <security>
+      <all-permissions/>
+   </security>
+   <resources>
+      <!-- property name="publish-url" value="$$context/publish"/ -->
+      <j2se version="1.6+"/>
+      <jar href="SWTBasedGUI/app/swtclient.jar"/>
+   </resources>
+   <resources os="Windows" arch="x86">
+      <nativelib href="SWTBasedGUI/app/windowsswt.jar" download="eager"/>
+      <jar href="SWTBasedGUI/app/windowsswt.jar"/>
+   </resources>
+   <resources os="Windows" arch="amd64">
+      <nativelib href="SWTBasedGUI/app/windowsswt64.jar" download="eager"/>
+      <jar href="SWTBasedGUI/app/windowsswt64.jar"/>
+   </resources>
+   <application-desc main-class="com.softwareag.cis.gui.swt.start.StartCIBrowser">
+	    <argument>webstarturl=$$codebase/SWTBasedGUI/app</argument>
+	    <argument>webstartpage=cisnatural/NatLogon&xciParameters.natsession=##natural.ant.ajax.web.context##</argument>
+   </application-desc>
+</jnlp>

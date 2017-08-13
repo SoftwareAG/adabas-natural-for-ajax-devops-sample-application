@@ -1,0 +1,36 @@
+DB: 012 FILE: 044  - NCCUSTOMER                       DEFAULT SEQUENCE:   
+TYPE: ADABAS
+ 
+T L DB Name                              F Leng  S D Remark
+- - -- --------------------------------- - ----  - - ------------------------
+*      >Natural Source Header 000000
+*      :CP
+*      
+*      
+*      :LineIncrement 10
+*      <Natural Source Header
+  1 AA PERSON-ID                         N  8.0  N D 
+  1 AB BIRTH-DATE                        N  8.0  N   
+  1 AR SEX                               A    1    D 
+*      2 values: 'M' for 'male',  'F'                
+*      for 'female'                                  
+G 1 AC NAME                                          
+  2 AD SURNAME                           A   20    D 
+  2 AE FIRST-NAME-OLD                    A   20  N   
+  2 AF FIRST-NAME-2                      A   20  N   
+  2 AG TITLE                             A   20  N   
+  2 AH FORM-OF-ADDRESS                   A    8  N   
+G 1 AI ADDRESS                                       
+M 2 AJ EMAIL                             A   20  N   
+  2 AK STREET-NUMBER                     A   20  N   
+  2 AL COUNTRY                           A    3    D 
+  2 AM ZIP-CODE                          A   10  N D 
+  2 AN CITY                              A   20    D 
+P 1 AO PHONE                                         
+*      2 occ.:  1. phone private,  2.                
+*      phone company                                 
+  2 AP AREA-CODE                         A    6      
+  2 AQ PHONE-NUMBER                      A   15      
+  1 TI TIMESTAMP                         B    8      
+  1 FN FIRST-NAME-1                      U   40      
+******DDM OUTPUT TERMINATED******
