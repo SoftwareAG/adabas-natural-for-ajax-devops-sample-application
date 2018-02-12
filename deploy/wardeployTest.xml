@@ -35,14 +35,14 @@
     <property name="natural.ant.ajax.repository.username" value="" />
     <property name="natural.ant.ajax.appserver" value="Tomcat" />
     <property name="natural.ant.ajax.project.rootdir" value="/var/lib/jenkins/workspace/NJX-CI-Test" />
-    <property name="natural.ant.ajax.njx.licensefile" value="/var/lib/jenkins/sagnjx/njx83.xml" />
+    <property name="natural.ant.ajax.njx.licensefile" value="/var/lib/jenkins/sagnjx/njx84.xml" />
     <property name="natural.ant.ajax.deploy.file.name" value="deploy/wardeployTest.xml" />
     <property name="natural.ant.ajax.session.nwohost" value="localhost" />
     <property name="natural.ant.ajax.repository.url" value="" />
     <property name="natural.ant.ajax.repository.access.method" value=":pserver:" />
     <property name="natural.ant.ajax.project.name" value="SunnyIslands" />
     <property name="natural.ant.ajax.repository.module" value="SunnyIslands" />
-    <property name="natural.ant.ajax.njx.application" value="/var/lib/jenkins/sagnjx/njx83.war" />
+    <property name="natural.ant.ajax.njx.application" value="/var/lib/jenkins/sagnjx/njx84.war" />
     <property name="natural.ant.ajax.repository.password" value="" />
     <property name="natural.ant.ajax.web.context" value="SunnyIslands-Test" />
     <property name="natural.ant.ajax.failonerror" value="YES" />
