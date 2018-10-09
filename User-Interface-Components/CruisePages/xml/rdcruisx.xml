@@ -697,7 +697,7 @@ Next                                                        </span>
                                                 </div>
                                             </bmobile:row>
                                             <bmobile:row>
-                                                <bmobile:flabel styleclasses="center-block" style="color:#c6d9f1;font-style:italic;margin-left:5%;margin-right:5%;text-decoration:underline;font-size: 1.2em" name="Parikia">
+                                                <bmobile:flabel styleclasses="center-block" style="color:#c6d9f1;font-style:italic;margin-left:5%;margin-right:5%;text-decoration:underline;font-size: 1.2em" name="ParikiaDevOps">
                                                 </bmobile:flabel>
                                             </bmobile:row>
                                             <bmobile:row>
