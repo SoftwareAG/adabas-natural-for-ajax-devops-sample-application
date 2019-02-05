@@ -1,0 +1,879 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<natpage stylesheetfile="../cis/styles/CIS_WM.css" addstylesheetfile="../HTMLBasedGUI/bootstrap/njxmobiledemo.css" natsource="rdcruisa" natsinglebyte="true" natkcheck="true" xmlns:njx="http://www.softwareag.com/njx/njxMapConverter" xmlns:bmobile="http://www.softwareag.com/njx/njxMobile">
+    <njx:objects>
+    </njx:objects>
+    <pagebody pagebodystyle="background-color: #125996">
+        <bmobile:container takefullwidth="true">
+            <bmobile:row>
+                <bmobile:col styleclasses="col-lg-3 col-md-3 col-sm-4 col-xs-8">
+                    <bmobile:flabel styleclasses="cruiselabelitalic" nameprop="pvdatum">
+                    </bmobile:flabel>
+                </bmobile:col>
+                <bmobile:col styleclasses="col-lg-5 col-md-5 col-sm-4 col-xs-0">
+                </bmobile:col>
+                <bmobile:col styleclasses="col-lg-1 col-md-1 col-sm-1 col-xs-1" style="padding-left:0;padding-right:2%;">
+                    <bmobile:icon iconurl="./images/RD-flageng.png" method="onSeten" title="english">
+                    </bmobile:icon>
+                </bmobile:col>
+                <bmobile:col styleclasses="col-lg-1 col-md-1 col-sm-1 col-xs-1" style="padding-left:0;padding-right:2%;">
+                    <bmobile:icon iconurl="./images/RD-flagger.png" method="onSetge" title="german">
+                    </bmobile:icon>
+                </bmobile:col>
+                <bmobile:col styleclasses="col-lg-1 col-md-1 col-sm-1 col-xs-1" style="padding-left:0;padding-right:2%;">
+                    <bmobile:icon iconurl="./images/RD-flagspa.png" method="onSetsp" title="spanish">
+                    </bmobile:icon>
+                </bmobile:col>
+                <bmobile:col styleclasses="col-lg-1 col-md-1 col-sm-1 col-xs-1" style="padding-left:0;padding-right:2%;">
+                    <bmobile:icon iconurl="./images/RD-flagpor.png" method="onSetpo" title="portuguese">
+                    </bmobile:icon>
+                </bmobile:col>
+            </bmobile:row>
+            <bmobile:vdist style="height:5px;background-color:#0C3B60">
+            </bmobile:vdist>
+            <bmobile:row style="background-color:#0C3B60">
+                <bmobile:col styleclasses="col-lg-9 col-md-9 col-sm-9 col-xs-9">
+                    <bmobile:flabel styleclasses="cruiselabelitalic" nameprop="pvmytopmail">
+                    </bmobile:flabel>
+                </bmobile:col>
+                <bmobile:col styleclasses="col-lg-offset-1 col-md-offset-1 col-sm-offset-1 col-xs-offset-1 col-lg-1 col-md-1 col-sm-1 col-xs-1" style="padding-left:0;padding-right:2%;">
+                    <bmobile:icon iconurl="./images/RD-login.png" method="onLoginicon" visibleprop="pvloginiconvisible" invisiblemode="invisible" title="Login" style="padding:4%;">
+                    </bmobile:icon>
+                </bmobile:col>
+                <bmobile:col styleclasses="col-lg-1 col-md-1 col-sm-1 col-xs-1" style="padding-left:0;padding-right:2%;">
+                    <bmobile:icon iconurl="./images/RD-mydata.png" method="onMydataicon" visibleprop="pvmydataiconvisible" invisiblemode="invisible" title="MyData" style="padding:4%;">
+                    </bmobile:icon>
+                </bmobile:col>
+                <bmobile:col styleclasses="col-lg-1 col-md-1 col-sm-1 col-xs-1" style="padding-left:0;padding-right:2%;">
+                    <bmobile:icon iconurl="./images/RD-newdata.png" method="onNewdataicon" visibleprop="pvnewdataiconvisible" invisiblemode="invisible" title="New User" style="padding:4%;">
+                    </bmobile:icon>
+                </bmobile:col>
+                <bmobile:col styleclasses="col-lg-1 col-md-1 col-sm-1 col-xs-1" style="padding-left:0;padding-right:2%;">
+                    <bmobile:icon iconurl="./images/RD-logout.png" method="onLogouticon" visibleprop="pvlogouticonvisible" invisiblemode="invisible" title="Logout" style="padding:4%;">
+                    </bmobile:icon>
+                </bmobile:col>
+            </bmobile:row>
+            <bmobile:row styleclasses="center-block" style="width:100%" invisiblemode="invisible" visibleprop="pvloginpanelvisible">
+                <bmobile:col>
+                    <bmobile:imageout valueprop="pvmyloginimage" styleclasses="center-block" style="max-width:100%;height:auto;">
+                    </bmobile:imageout>
+                </bmobile:col>
+            </bmobile:row>
+            <bmobile:panel style="background-color: ##0C3B60; border-style:none" visibleprop="pvloginpanelvisible" invisiblemode="invisible">
+                <bmobile:panelbody style="background-color: #125996; border-style:none">
+                    <bmobile:row>
+                        <bmobile:col styleclasses="col-lg-6 col-md-6 col-xs-6 col-sm-6">
+                            <bmobile:ffield styleclasses="input-md input-responsive" placeholder="email" valueprop="pvloginident" required="true" validationmessage="Required">
+                            </bmobile:ffield>
+                        </bmobile:col>
+                        <bmobile:col styleclasses="col-lg-6 col-md-6 col-xs-6 col-sm-6">
+                            <bmobile:ffield styleclasses="input-md input-responsive" placeholder="password" valueprop="pvloginpw" required="true" validationmessage="Required">
+                            </bmobile:ffield>
+                        </bmobile:col>
+                    </bmobile:row>
+                    <bmobile:row>
+                        <bmobile:col styleclasses="col-lg-offset-5 col-md-offset-5 col-sm-offset-4 col-xs-offset-4 col-lg-1 col-md-1 col-sm-2 col-xs-2" style="padding-left:0;padding-right:2%;">
+                            <bmobile:icon iconurl="./images/RD-ok.png" method="onLoginbutton" title="ok" style="border-style:none;padd ing:2%;">
+                            </bmobile:icon>
+                        </bmobile:col>
+                        <bmobile:col styleclasses="col-lg-1 col-md-1 col-sm-2 col-xs-2" style="padding-left:0;padding-right:2%;">
+                            <bmobile:icon iconurl="./images/RD-cancel.png" method="onLoginClose" title="Cancel" style="border-style:none;padding:2%;">
+                            </bmobile:icon>
+                        </bmobile:col>
+                    </bmobile:row>
+                    <bmobile:row style="background-color:#0C3B60" invisiblemode="invisible" visibleprop="pvloginalerttxtvisible">
+                        <bmobile:col>
+                            <bmobile:flabel style="color:#95b3d7;" nameprop="pvloginalerttxt">
+                            </bmobile:flabel>
+                        </bmobile:col>
+                    </bmobile:row>
+                </bmobile:panelbody>
+            </bmobile:panel>
+        </bmobile:container>
+        <bmobile:navbar menuprop="dlmenu">
+        </bmobile:navbar>
+        <bmobile:container>
+        </bmobile:container>
+        <bmobile:container takefullwidth="true" comment="mittlerer Teil / at lg device 2 cols" style="overflow-x:hidden;">
+            <bmobile:row>
+                <bmobile:col comment="left part" styleclasses="col-lg-9 col-md-12 col-sm-12 col-xs-12">
+                    <bmobile:panel style="background-color:#125996; border-style:none">
+                        <bmobile:panelbody>
+                            <bmobile:row styleclasses="center-block" style="width:100%" invisiblemode="invisible" visibleprop="pvhometxtvisible">
+                                <bmobile:col>
+                                    <bmobile:imageout valueprop="pvhomeimage" styleclasses="center-block" style="max-width:100%;height:auto;">
+                                    </bmobile:imageout>
+                                </bmobile:col>
+                            </bmobile:row>
+                            <bmobile:row styleclasses="center-block" style="width:100%;max-width:100%;" invisiblemode="invisible" visibleprop="pvhomevisible">
+                                <bmobile:col>
+                                    <bmobile:imageout valueprop="pvtopimage" styleclasses="center-block" style="max-width:100%;height:auto;padding-left:0;padding-right:0;margin-left:0;margin-right:0">
+                                    </bmobile:imageout>
+                                </bmobile:col>
+                            </bmobile:row>
+                            <bmobile:vdist style="height:20px">
+                            </bmobile:vdist>
+                            <bmobile:row invisiblemode="invisible" visibleprop="pvhomevisible">
+                                <bmobile:col styleclasses="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <bmobile:panel style="border-style:none;background-color: #125996;">
+                                        <bmobile:panelbody>
+                                            <bmobile:row>
+                                                <bmobile:flabel style="color:#c6d9f1;text-align:left;font-size: 1.2em;font-style:italic;padding-left:5%;;padding-right:5%" nameprop="pvhomedescription0a">
+                                                </bmobile:flabel>
+                                            </bmobile:row>
+                                            <bmobile:row>
+                                                <bmobile:flabel style="color:#c6d9f1;text-align:left;font-size: 1.2em;font-style:italic;padding-left:5%;;padding-right:5%" nameprop="pvhomedescription0b">
+                                                </bmobile:flabel>
+                                            </bmobile:row>
+                                            <bmobile:row>
+                                                <bmobile:flabel style="color:#c6d9f1;text-align:left;font-size: 1.2em;font-style:italic;padding-left:5%;;padding-right:5%" nameprop="pvhomedescription0c">
+                                                </bmobile:flabel>
+                                            </bmobile:row>
+                                        </bmobile:panelbody>
+                                    </bmobile:panel>
+                                </bmobile:col>
+                            </bmobile:row>
+                            <bmobile:row invisiblemode="invisible" visibleprop="pvhomevisible">
+                                <bmobile:col styleclasses="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                    <bmobile:panel style="background-color: #0C3B60; border-color:#c6d9f1; border-style:solid">
+                                        <bmobile:panelbody>
+                                            <bmobile:row>
+                                                <bmobile:col styleclasses="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                                                    <bmobile:flabel style="color:#c6d9f1;text-align:left;font-size: 1.2em;font-style:italic;padding-left:3%" nameprop="pvhomedescription1a">
+                                                    </bmobile:flabel>
+                                                </bmobile:col>
+                                            </bmobile:row>
+                                            <bmobile:row>
+                                                <bmobile:col styleclasses="col-lg-3 col-md-3 col-sm-2 col-xs-2">
+                                                    <bmobile:icon iconurl="./images/RD-select2.png" method="onShowAll">
+                                                    </bmobile:icon>
+                                                </bmobile:col>
+                                                <bmobile:col styleclasses="col-lg-9 col-md-9 col-sm-10 col-xs-10">
+                                                    <bmobile:flabel style="color:#c6d9f1;text-align:left;font-size: 1.2em;font-style:italic;" nameprop="pvhomedescription1b">
+                                                    </bmobile:flabel>
+                                                </bmobile:col>
+                                            </bmobile:row>
+                                        </bmobile:panelbody>
+                                    </bmobile:panel>
+                                </bmobile:col>
+                                <bmobile:col styleclasses="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                    <bmobile:panel style="background-color: #0C3B60; border-color:#c6d9f1; border-style:solid">
+                                        <bmobile:panelbody>
+                                            <bmobile:row>
+                                                <bmobile:col styleclasses="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                                                    <bmobile:flabel style="color:#c6d9f1;text-align:left;font-size: 1.2em;font-style:italic;padding-left:3%" nameprop="pvhomedescription2a">
+                                                    </bmobile:flabel>
+                                                </bmobile:col>
+                                            </bmobile:row>
+                                            <bmobile:row>
+                                                <bmobile:col styleclasses="col-lg-3 col-md-3 col-sm-2 col-xs-2">
+                                                    <bmobile:icon iconurl="./images/RD-select2.png" method="onHotcruises">
+                                                    </bmobile:icon>
+                                                </bmobile:col>
+                                                <bmobile:col styleclasses="col-lg-9 col-md-9 col-sm-10 col-xs-10">
+                                                    <bmobile:flabel style="color:#c6d9f1;text-align:left;font-size: 1.2em;font-style:italic;" nameprop="pvhomedescription2b">
+                                                    </bmobile:flabel>
+                                                </bmobile:col>
+                                            </bmobile:row>
+                                        </bmobile:panelbody>
+                                    </bmobile:panel>
+                                </bmobile:col>
+                                <bmobile:col styleclasses="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                    <bmobile:panel style="background-color: #0C3B60; border-color:#c6d9f1; border-style:solid">
+                                        <bmobile:panelbody>
+                                            <bmobile:row>
+                                                <bmobile:col styleclasses="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                                                    <bmobile:flabel style="color:#c6d9f1;text-align:left;font-size: 1.2em;font-style:italic;;padding-left:3%" nameprop="pvhomedescription3a">
+                                                    </bmobile:flabel>
+                                                </bmobile:col>
+                                            </bmobile:row>
+                                            <bmobile:row>
+                                                <bmobile:col styleclasses="col-lg-3 col-md-3 col-sm-2 col-xs-2">
+                                                    <bmobile:icon iconurl="./images/RD-select2.png" method="onFavorites">
+                                                    </bmobile:icon>
+                                                </bmobile:col>
+                                                <bmobile:col styleclasses="col-lg-9 col-md-9 col-sm-10 col-xs-10">
+                                                    <bmobile:flabel style="color:#c6d9f1;text-align:left;font-size: 1.2em;font-style:italic;" nameprop="pvhomedescription3b">
+                                                    </bmobile:flabel>
+                                                </bmobile:col>
+                                            </bmobile:row>
+                                        </bmobile:panelbody>
+                                    </bmobile:panel>
+                                </bmobile:col>
+                            </bmobile:row>
+                            <bmobile:row styleclasses="center-block" style="width:100%" invisiblemode="invisible" visibleprop="pvmydatapanelvisible">
+                                <bmobile:col>
+                                    <bmobile:imageout valueprop="pvmydataimage" styleclasses="center-block" style="max-width:100%;height:auto;">
+                                    </bmobile:imageout>
+                                </bmobile:col>
+                            </bmobile:row>
+                            <bmobile:row style="margin-left:0;margin-right:0;">
+                                <bmobile:col>
+                                    <bmobile:panel style="background-color: #0C3B60; border-style:none" visibleprop="pvmydatapanelvisible" invisiblemode="invisible">
+                                        <bmobile:panelbody>
+                                            <bmobile:row style="background-color: #0C3B60">
+                                                <bmobile:col styleclasses="col-lg-4 col-md-4 col-sm-10 col-xs-10">
+                                                    <bmobile:flabel style="color: #c6d9f1; border-style:none" nameprop="pvmynamelabeprop">
+                                                    </bmobile:flabel>
+                                                    <bmobile:ffield styleclasses="input-responsive" placeholder="Username" valueprop="pvmyname" maxlength="20">
+                                                    </bmobile:ffield>
+                                                </bmobile:col>
+                                                <bmobile:col styleclasses="col-lg-2 col-md-2 col-sm-10 col-xs-10">
+                                                    <bmobile:flabel style="color: #c6d9f1;" nameprop="pvmyfirstnamelabelprop">
+                                                    </bmobile:flabel>
+                                                    <bmobile:ffield styleclasses="input-responsive" placeholder="First Name" valueprop="pvmyfirstname" maxlength="20" njx:natstringtype="U">
+                                                    </bmobile:ffield>
+                                                </bmobile:col>
+                                                <bmobile:col styleclasses=" col-lg-4 col-md-4 col-sm-10 col-xs-10">
+                                                    <bmobile:flabel style="color: #c6d9f1;" nameprop="pvmybirthdatelabelprop">
+                                                    </bmobile:flabel>
+                                                    <bmobile:dateinput2 styleclasses="form-control" datatype="date" valueprop="pvmybirthdate" placeholder="Registration Start">
+                                                    </bmobile:dateinput2>
+                                                </bmobile:col>
+                                            </bmobile:row>
+                                            <bmobile:row style="background-color: #0C3B60">
+                                                <bmobile:col styleclasses="col-lg-10 col-md-10 col-sm-10 col-xs-10">
+                                                    <bmobile:flabel style="color: #c6d9f1; border-style:none" nameprop="pvmyemaillabelprop">
+                                                    </bmobile:flabel>
+                                                    <bmobile:ffield styleclasses="input-responsive" placeholder="Email" valueprop="pvmyemail" required="true" validationmessage="Required">
+                                                    </bmobile:ffield>
+                                                </bmobile:col>
+                                            </bmobile:row>
+                                            <bmobile:row style="background-color: #0C3B60">
+                                                <bmobile:col styleclasses="col-lg-4 col-md-4 col-sm-10 col-xs-10">
+                                                    <bmobile:flabel style="color: #c6d9f1; border-style:none" nameprop="pvmystreetlabelprop">
+                                                    </bmobile:flabel>
+                                                    <bmobile:ffield styleclasses="input-responsive" placeholder="Street" valueprop="pvmyStreet" maxlength="20" formautocomplete="false" required="true" validationmessage="Required">
+                                                    </bmobile:ffield>
+                                                </bmobile:col>
+                                                <bmobile:col styleclasses="col-lg-2 col-md-2 col-sm-10 col-xs-10">
+                                                    <bmobile:flabel style="color: #c6d9f1;" nameprop="pvmyziplabelprop">
+                                                    </bmobile:flabel>
+                                                    <bmobile:ffield styleclasses="input-responsive" placeholder="ZipCode" valueprop="pvmyzipcode" maxlength="20" formautocomplete="false" required="true" validationmessage="Required">
+                                                    </bmobile:ffield>
+                                                </bmobile:col>
+                                                <bmobile:col styleclasses="col-lg-4 col-md-4 col-sm-10 col-xs-10">
+                                                    <bmobile:flabel style="color: #c6d9f1;" nameprop="pvmycitylabelprop">
+                                                    </bmobile:flabel>
+                                                    <bmobile:ffield styleclasses="input-responsive" placeholder="City" valueprop="pvmycity" maxlength="20" formautocomplete="false" required="true" validationmessage="Required">
+                                                    </bmobile:ffield>
+                                                </bmobile:col>
+                                            </bmobile:row>
+                                            <bmobile:row>
+                                                <bmobile:col styleclasses="col-lg-1 col-md-1 col-sm-2 col-xs-2" style="padding-left:0;padding-right:2%;">
+                                                    <bmobile:icon iconurl="./images/RD-ok2.png" method="onMydataSave" title="ok" style="border-style:none;padding:2%;">
+                                                    </bmobile:icon>
+                                                </bmobile:col>
+                                                <bmobile:col styleclasses="col-lg-1 col-md-1 col-sm-2 col-xs-2" style="padding-left:0;padding-right:2%;">
+                                                    <bmobile:icon iconurl="./images/RD-cancel2.png" method="onMydataClose" title="Cancel" style="border-style:none;padding:2%;">
+                                                    </bmobile:icon>
+                                                </bmobile:col>
+                                            </bmobile:row>
+                                            <bmobile:row style="background-color:#0C3B60" invisiblemode="invisible" visibleprop="pvmydataalerttxtvisible">
+                                                <bmobile:col>
+                                                    <bmobile:flabel style="color:#95b3d7;" nameprop="pvmydataalerttxt">
+                                                    </bmobile:flabel>
+                                                </bmobile:col>
+                                            </bmobile:row>
+                                        </bmobile:panelbody>
+                                    </bmobile:panel>
+                                </bmobile:col>
+                            </bmobile:row>
+                            <bmobile:row styleclasses="center-block" style="width:100%" invisiblemode="invisible" visibleprop="pvoffervisible">
+                                <bmobile:col>
+                                    <bmobile:imageout valueprop="pvofferimage" styleclasses="center-block" style="max-width:100%;height:auto;">
+                                    </bmobile:imageout>
+                                </bmobile:col>
+                            </bmobile:row>
+                            <bmobile:row style="margin-left:0;margin-right:0">
+                                <bmobile:col>
+                                    <bmobile:panel style="background-color: #1995dc; border-style:none" visibleprop="pvoffervisible" invisiblemode="invisible">
+                                        <bmobile:panelbody>
+                                            <bmobile:row>
+                                                <bmobile:col styleclasses="col-lg-3 col-md-6 col-sm-6 col-xs-6">
+                                                    <bmobile:panel style="background-color: #125996; border-style:none">
+                                                        <bmobile:panelbody>
+                                                            <bmobile:row styleclasses="center-block">
+                                                                <bmobile:col>
+                                                                    <bmobile:imageout valueprop="pvofferimage1" style="max-width:100%; width:100%; height: auto;">
+                                                                    </bmobile:imageout>
+                                                                </bmobile:col>
+                                                            </bmobile:row>
+                                                            <bmobile:vdist style="height:15px">
+                                                            </bmobile:vdist>
+                                                            <bmobile:row styleclasses="center-block">
+                                                                <bmobile:col style="color:#c6d9f1; text-align:right">
+                                                                    <bmobile:flabel styleclasses="cruiselabelprice" nameprop="pvoffer1price">
+                                                                    </bmobile:flabel>
+                                                                </bmobile:col>
+                                                            </bmobile:row>
+                                                            <bmobile:row>
+                                                                <bmobile:col style="color:#c6d9f1">
+                                                                    <bmobile:flabel styleclasses="cruiselabeloffername" nameprop="pvoffer1cruisename">
+                                                                    </bmobile:flabel>
+                                                                </bmobile:col>
+                                                            </bmobile:row>
+                                                            <bmobile:row style="color:#c6d9f1">
+                                                                <bmobile:flabel styleclasses="cruiselabeloffermisc" nameprop="pvoffer1route">
+                                                                </bmobile:flabel>
+                                                            </bmobile:row>
+                                                            <bmobile:row style="color:#c6d9f1">
+                                                                <bmobile:flabel styleclasses="cruiselabeloffermisc" nameprop="pvoffer1date">
+                                                                </bmobile:flabel>
+                                                            </bmobile:row>
+                                                            <bmobile:row style="color:#c6d9f1">
+                                                                <bmobile:col>
+                                                                    <bmobile:icon iconurl="./images/RD-select.png" method="onShowdetails1" title="Select Favorit 1" style="max-width:30%; width:30%; height:auto;text-align:left">
+                                                                    </bmobile:icon>
+                                                                </bmobile:col>
+                                                            </bmobile:row>
+                                                        </bmobile:panelbody>
+                                                    </bmobile:panel>
+                                                </bmobile:col>
+                                                <bmobile:col styleclasses="col-lg-3 col-md-6 col-sm-6 col-xs-6">
+                                                    <bmobile:panel style="background-color: #125996; border-style:none">
+                                                        <bmobile:panelbody>
+                                                            <bmobile:row styleclasses="center-block">
+                                                                <bmobile:col>
+                                                                    <bmobile:imageout valueprop="pvofferimage2" styleclasses="center-block" style="max-width:100%; width:100%; height: auto;">
+                                                                    </bmobile:imageout>
+                                                                </bmobile:col>
+                                                            </bmobile:row>
+                                                            <bmobile:vdist style="height:15px">
+                                                            </bmobile:vdist>
+                                                            <bmobile:row styleclasses="center-block">
+                                                                <bmobile:col style="color:#c6d9f1; text-align:right">
+                                                                    <bmobile:flabel styleclasses="cruiselabelprice" nameprop="pvoffer2price">
+                                                                    </bmobile:flabel>
+                                                                </bmobile:col>
+                                                            </bmobile:row>
+                                                            <bmobile:row style="color:#c6d9f1">
+                                                                <bmobile:flabel styleclasses="cruiselabeloffername" nameprop="pvoffer2cruisename">
+                                                                </bmobile:flabel>
+                                                            </bmobile:row>
+                                                            <bmobile:row style="color:#c6d9f1">
+                                                                <bmobile:flabel styleclasses="cruiselabeloffermisc" nameprop="pvoffer2route">
+                                                                </bmobile:flabel>
+                                                            </bmobile:row>
+                                                            <bmobile:row style="color:#c6d9f1">
+                                                                <bmobile:flabel styleclasses="cruiselabeloffermisc" nameprop="pvoffer2date">
+                                                                </bmobile:flabel>
+                                                            </bmobile:row>
+                                                            <bmobile:row>
+                                                                <bmobile:col>
+                                                                    <bmobile:icon iconurl="./images/RD-select.png" method="onShowdetails2" title="Select Favorit 2" style="max-width:30%; width:30%; height:auto;text-align:left">
+                                                                    </bmobile:icon>
+                                                                </bmobile:col>
+                                                            </bmobile:row>
+                                                        </bmobile:panelbody>
+                                                    </bmobile:panel>
+                                                </bmobile:col>
+                                                <bmobile:col styleclasses="col-lg-3 col-md-6 col-sm-6 col-xs-6">
+                                                    <bmobile:panel style="background-color: #125996; border-style:none">
+                                                        <bmobile:panelbody>
+                                                            <bmobile:row styleclasses="center-block">
+                                                                <bmobile:col>
+                                                                    <bmobile:imageout valueprop="pvofferimage3" styleclasses="center-block" style="max-width:100%; width:100%; height: auto;">
+                                                                    </bmobile:imageout>
+                                                                </bmobile:col>
+                                                            </bmobile:row>
+                                                            <bmobile:vdist style="height:15px">
+                                                            </bmobile:vdist>
+                                                            <bmobile:row styleclasses="center-block">
+                                                                <bmobile:col style="color:#c6d9f1; text-align:right">
+                                                                    <bmobile:flabel styleclasses="cruiselabelprice" nameprop="pvoffer3price">
+                                                                    </bmobile:flabel>
+                                                                </bmobile:col>
+                                                            </bmobile:row>
+                                                            <bmobile:row style="color:#c6d9f1">
+                                                                <bmobile:flabel styleclasses="cruiselabeloffername" nameprop="pvoffer3cruisename">
+                                                                </bmobile:flabel>
+                                                            </bmobile:row>
+                                                            <bmobile:row style="color:#c6d9f1">
+                                                                <bmobile:flabel styleclasses="cruiselabeloffermisc" nameprop="pvoffer3route">
+                                                                </bmobile:flabel>
+                                                            </bmobile:row>
+                                                            <bmobile:row style="color:#c6d9f1">
+                                                                <bmobile:flabel styleclasses="cruiselabeloffermisc" nameprop="pvoffer3date">
+                                                                </bmobile:flabel>
+                                                            </bmobile:row>
+                                                            <bmobile:row>
+                                                                <bmobile:col>
+                                                                    <bmobile:icon iconurl="./images/RD-select.png" method="onShowdetails3" title="Select Favorit 3" style="max-width:30%; width:30%; height:auto;text-align:left">
+                                                                    </bmobile:icon>
+                                                                </bmobile:col>
+                                                            </bmobile:row>
+                                                        </bmobile:panelbody>
+                                                    </bmobile:panel>
+                                                </bmobile:col>
+                                                <bmobile:col styleclasses="col-lg-3 col-md-6 col-sm-6 col-xs-6">
+                                                    <bmobile:panel style="background-color: #125996; border-style:none">
+                                                        <bmobile:panelbody>
+                                                            <bmobile:row styleclasses="center-block">
+                                                                <bmobile:col>
+                                                                    <bmobile:imageout valueprop="pvofferimage4" styleclasses="center-block" style="max-width:100%; width:100%; height: auto;">
+                                                                    </bmobile:imageout>
+                                                                </bmobile:col>
+                                                            </bmobile:row>
+                                                            <bmobile:vdist style="height:15px">
+                                                            </bmobile:vdist>
+                                                            <bmobile:row styleclasses="center-block">
+                                                                <bmobile:col style="color:#c6d9f1; text-align:right">
+                                                                    <bmobile:flabel styleclasses="cruiselabelprice" nameprop="pvoffer4price">
+                                                                    </bmobile:flabel>
+                                                                </bmobile:col>
+                                                            </bmobile:row>
+                                                            <bmobile:row style="color:#c6d9f1">
+                                                                <bmobile:flabel styleclasses="cruiselabeloffername" nameprop="pvoffer4cruisename">
+                                                                </bmobile:flabel>
+                                                            </bmobile:row>
+                                                            <bmobile:row style="color:#c6d9f1">
+                                                                <bmobile:flabel styleclasses="cruiselabeloffermisc" nameprop="pvoffer4route">
+                                                                </bmobile:flabel>
+                                                            </bmobile:row>
+                                                            <bmobile:row style="color:#c6d9f1">
+                                                                <bmobile:flabel styleclasses="cruiselabeloffermisc" nameprop="pvoffer4date">
+                                                                </bmobile:flabel>
+                                                            </bmobile:row>
+                                                            <bmobile:row>
+                                                                <bmobile:col>
+                                                                    <bmobile:icon iconurl="./images/RD-select.png" method="onShowdetails4" title="Select Favorit 4" style="max-width:30%; width:30%; height:auto;text-align:left">
+                                                                    </bmobile:icon>
+                                                                </bmobile:col>
+                                                            </bmobile:row>
+                                                        </bmobile:panelbody>
+                                                    </bmobile:panel>
+                                                </bmobile:col>
+                                            </bmobile:row>
+                                        </bmobile:panelbody>
+                                    </bmobile:panel>
+                                </bmobile:col>
+                            </bmobile:row>
+                            <bmobile:row styleclasses="center-block" style="width:100%" invisiblemode="invisible" visibleprop="pvqestionsvisible">
+                                <bmobile:col>
+                                    <bmobile:imageout valueprop="pvqestionsimage" styleclasses="center-block" style="max-width:100%;height:auto;">
+                                    </bmobile:imageout>
+                                </bmobile:col>
+                            </bmobile:row>
+                            <bmobile:row styleclasses="center-block" style="width:100%" invisiblemode="invisible" visibleprop="pvcrdetailspanelvisible">
+                                <bmobile:col>
+                                    <bmobile:imageout valueprop="pvdetailsimage" styleclasses="center-block" style="max-width:100%;height:auto;">
+                                    </bmobile:imageout>
+                                </bmobile:col>
+                            </bmobile:row>
+                            <bmobile:row style="margin-left:0;margin-right:0;">
+                                <bmobile:col>
+                                    <bmobile:panel style="background-color: #1995dc; border-style:none" visibleprop="pvcrdetailspanelvisible" invisiblemode="invisible">
+                                        <bmobile:panelbody>
+                                            <bmobile:row styleclasses="center-block">
+                                                <bmobile:col styleclasses="col-lg-6 col-md-6 col-sm-8 col-xs-8">
+                                                    <bmobile:imageout valueprop="pvcruiseimage">
+                                                    </bmobile:imageout>
+                                                </bmobile:col>
+                                            </bmobile:row>
+                                            <bmobile:vdist style="height:8px;background-color:##1995dc">
+                                            </bmobile:vdist>
+                                            <bmobile:row>
+                                                <bmobile:col styleclasses="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                                    <bmobile:flabel style="color:#c6d9f1;font-style:italic;font-size: 1em" nameprop="pvcrlabeldetstartharbor">
+                                                    </bmobile:flabel>
+                                                    <bmobile:ffield valueprop="pvcrdetstartharbor" maxlength="20" formautocomplete="false" required="true" validationmessage="Required">
+                                                    </bmobile:ffield>
+                                                </bmobile:col>
+                                                <bmobile:col styleclasses="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                                    <bmobile:flabel style="color:#c6d9f1;font-style:italic;font-size: 1em" nameprop="pvcrlabeldetdestharbor">
+                                                    </bmobile:flabel>
+                                                    <bmobile:ffield valueprop="pvcrdetdestharbor" maxlength="20" formautocomplete="false" required="true" validationmessage="Required">
+                                                    </bmobile:ffield>
+                                                </bmobile:col>
+                                            </bmobile:row>
+                                            <bmobile:row>
+                                                <bmobile:col styleclasses="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                                    <bmobile:flabel style="color:#c6d9f1;font-style:italic;font-size: 1em" nameprop="pvcrlabeldetstartdate">
+                                                    </bmobile:flabel>
+                                                    <bmobile:dateinput2 styleclasses="form-control" datatype="date" valueprop="pvcrdetstartdate">
+                                                    </bmobile:dateinput2>
+                                                </bmobile:col>
+                                                <bmobile:col styleclasses="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                                    <bmobile:flabel style="color:#c6d9f1;font-style:italic;font-size: 1em" nameprop="pvcrlabeldetenddate">
+                                                    </bmobile:flabel>
+                                                    <bmobile:dateinput2 styleclasses="form-control" datatype="date" valueprop="pvcrdetenddate">
+                                                    </bmobile:dateinput2>
+                                                </bmobile:col>
+                                            </bmobile:row>
+                                            <bmobile:row>
+                                                <bmobile:col styleclasses="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                                    <bmobile:flabel style="color:#c6d9f1;font-style:italic;font-size: 1em" nameprop="pvcrlabeldetyachtname">
+                                                    </bmobile:flabel>
+                                                    <bmobile:ffield placeholder="Street" valueprop="pvcrdetyachtname" maxlength="20" formautocomplete="false" required="true" validationmessage="Required">
+                                                    </bmobile:ffield>
+                                                </bmobile:col>
+                                            </bmobile:row>
+                                            <bmobile:row>
+                                                <bmobile:col styleclasses="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                                    <bmobile:flabel style="color:#c6d9f1;font-style:italic;font-size: 1em" nameprop="pvcrlabeldetprice">
+                                                    </bmobile:flabel>
+                                                    <bmobile:ffield placeholder="Prices" valueprop="pvcrdetprices" maxlength="30" formautocomplete="false" required="true" validationmessage="Required">
+                                                    </bmobile:ffield>
+                                                </bmobile:col>
+                                            </bmobile:row>
+                                            <bmobile:vdist style="height:5px;background-color:##1995dc">
+                                            </bmobile:vdist>
+                                            <bmobile:row>
+                                                <bmobile:col styleclasses="col-lg-offset-1 col-md-offset-1 col-sm-offset-1 col-xs-offset-1 col-lg-1 col-md-1 col-sm-2 col-xs-2" style="padding-left:0;padding-right:2%;">
+                                                    <bmobile:icon iconurl="./images/RD-ok3.png" method="onBookingSave" title="ok" style="border-style:none;padding:2%;">
+                                                    </bmobile:icon>
+                                                </bmobile:col>
+                                                <bmobile:col styleclasses="col-lg-1 col-md-1 col-sm-2 col-xs-2" style="padding-left:0;padding-right:2%;">
+                                                    <bmobile:icon iconurl="./images/RD-cancel3.png" method="onBookingClose" title="Cancel" style="border-style:none;padding:2%;">
+                                                    </bmobile:icon>
+                                                </bmobile:col>
+                                            </bmobile:row>
+                                            <bmobile:row style="background-color:#0C3B60" invisiblemode="invisible" visibleprop="pvdetailsalerttxtvisible">
+                                                <bmobile:col>
+                                                    <bmobile:flabel style="color:#95b3d7;" nameprop="pvdetailsalerttxt">
+                                                    </bmobile:flabel>
+                                                </bmobile:col>
+                                            </bmobile:row>
+                                            <bmobile:vdist style="height:5px;background-color:##1995dc">
+                                            </bmobile:vdist>
+                                        </bmobile:panelbody>
+                                    </bmobile:panel>
+                                </bmobile:col>
+                            </bmobile:row>
+                            <bmobile:row styleclasses="center-block" style="width:100%" invisiblemode="invisible" visibleprop="pvfavtxtvisible">
+                                <bmobile:col>
+                                    <bmobile:imageout valueprop="pvfavorimage" styleclasses="center-block" style="max-width:100%;height:auto;">
+                                    </bmobile:imageout>
+                                </bmobile:col>
+                            </bmobile:row>
+                            <bmobile:row style="margin-left:0;margin-right:0;">
+                                <bmobile:col>
+                                    <bmobile:panel style="background-color: #125996; border-style:none" visibleprop="pvfavtxtvisible" invisiblemode="invisible">
+                                        <bmobile:panelbody>
+                                            <bmobile:row styleclasses="center-block">
+                                                <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                                                    <ol class="carousel-indicators" data-interval="2000" pause="hover">
+                                                        <li data-target="#myCarousel" data-slide-to="0" class="active">
+                                                        </li>
+                                                        <li data-target="#myCarousel" data-slide-to="1">
+                                                        </li>
+                                                        <li data-target="#myCarousel" data-slide-to="2">
+                                                        </li>
+                                                        <li data-target="#myCarousel" data-slide-to="3">
+                                                        </li>
+                                                    </ol>
+                                                    <div class="carousel-inner" role="listbox" style="margin-top:10px">
+                                                        <div class="item active">
+                                                            <bmobile:imageout valueprop="pvimageaghios" alt="Aghios" style="width:50%;margin: auto;padding-top:2%">
+                                    				        </bmobile:imageout>                                                            
+                                                            <div class="carousel-caption" style="position: relative; left: auto; right: auto;">
+                                                                <h3>
+Agios Nikolaos                                                                </h3>
+                                                            </div>
+                                                        </div>
+                                                        <div class="item">
+                                                            <bmobile:imageout valueprop="pvimageparos" alt="Paros" style="width:50%;margin: auto;padding-top:2%">
+                                    				        </bmobile:imageout>
+                                                            <div class="carousel-caption" style="position: relative; left: auto; right: auto;">
+                                                                <h3>
+Paros                                                                </h3>
+                                                            </div>
+                                                        </div>
+                                                        <div class="item">
+                                                            <bmobile:imageout valueprop="pvimagelefkas" alt="Lefkas" style="width:50%;margin: auto;padding-top:2%">
+                                    				        </bmobile:imageout>                                                            
+                                                            <div class="carousel-caption" style="position: relative; left: auto; right: auto;">
+                                                                <h3>
+Lefkas                                                                </h3>
+                                                            </div>
+                                                        </div>
+                                                        <div class="item">
+                                                            <bmobile:imageout valueprop="pvimagesantorini" alt="Santorini" style="width:50%;margin: auto;padding-top:2%">
+                                    				        </bmobile:imageout>                                                             
+                                                            <div class="carousel-caption" style="position: relative; left: auto; right: auto;">
+                                                                <h3>
+Santorini                                                                </h3>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+                                                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true">
+                                                        </span>
+                                                        <span class="sr-only">
+Previous                                                        </span>
+                                                    </a>
+                                                    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+                                                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true">
+                                                        </span>
+                                                        <span class="sr-only">
+Next                                                        </span>
+                                                    </a>
+                                                </div>
+                                            </bmobile:row>
+                                            <bmobile:row style="background-color: #125996; border-style:none">
+                                                <bmobile:col styleclasses="col-lg-offset-2 col-md-offset-2 col-sm-offset-2 col-xs-offset-2 col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                                                    <bmobile:icon iconurl="./images/RD-selfav1.png" method="onFav1button" title="Select Favorit 1" style="font-size:5px">
+                                                    </bmobile:icon>
+                                                </bmobile:col>
+                                                <bmobile:col styleclasses="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                                                    <bmobile:icon iconurl="./images/RD-selfav2.png" method="onFav2button" title="Select Favorit 2" style="font-size:5px">
+                                                    </bmobile:icon>
+                                                </bmobile:col>
+                                                <bmobile:col styleclasses="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                                                    <bmobile:icon iconurl="./images/RD-selfav3.png" method="onFav3button" title="Select Favorit 3" style="font-size:5px">
+                                                    </bmobile:icon>
+                                                </bmobile:col>
+                                                <bmobile:col styleclasses="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                                                    <bmobile:icon iconurl="./images/RD-selfav4.png" method="onFav4button" title="Select Favorit 4" style="font-size:5px">
+                                                    </bmobile:icon>
+                                                </bmobile:col>
+                                            </bmobile:row>
+                                        </bmobile:panelbody>
+                                    </bmobile:panel>
+                                </bmobile:col>
+                            </bmobile:row>
+                            <bmobile:row styleclasses="center-block" style="width:100%;max-width:100%;" invisiblemode="invisible" visibleprop="pvresultpanelvisible">
+                                <bmobile:col>
+                                    <bmobile:imageout valueprop="pvsearchimage" styleclasses="center-block" style="max-width:100%;height:auto;padding-left:0;padding-right:0;margin-bottom:10%;margin-left:0;margin-right:0">
+                                    </bmobile:imageout>
+                                </bmobile:col>
+                            </bmobile:row>
+                            <bmobile:row styleclasses="center-block" style="width:100%" invisiblemode="invisible" visibleprop="pvresultpanelvisible">
+                                <bmobile:col>
+                                    <bmobile:imageout valueprop="pvalltripsimage" styleclasses="center-block" style="max-width:100%;height:auto;">
+                                    </bmobile:imageout>
+                                </bmobile:col>
+                            </bmobile:row>
+                            <bmobile:row style="margin-left:0;margin-right:0;">
+                                <bmobile:col>
+                                    <bmobile:panel style="background-color:#1995dc;border-style:none" visibleprop="pvresultpanelvisible" invisiblemode="invisible">
+                                        <bmobile:panelbody style="background-color: #1995dc; border-style:none">
+                                            <bmobile:vdist style="height:10%">
+                                            </bmobile:vdist>
+                                            <bmobile:row>
+                                                <bmobile:col styleclasses="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="border-style:none">
+                                                    <bmobile:simplegrid gridprop="lines" selectprop="selectedline" width="100%" styleclasses="table-striped">
+                                                        <bmobile:simpleheaderrow>
+                                                            <bmobile:simpleheadercol name="Id" style="width:3%">
+                                                            </bmobile:simpleheadercol>
+                                                            <bmobile:simpleheadercol name="Date">
+                                                            </bmobile:simpleheadercol>
+                                                            <bmobile:simpleheadercol name="Start-Harbor">
+                                                            </bmobile:simpleheadercol>
+                                                            <bmobile:simpleheadercol name="Destination">
+                                                            </bmobile:simpleheadercol>
+                                                        </bmobile:simpleheaderrow>
+                                                        <bmobile:simplerow onclickmethod="onpvLineClick" ondblclickmethod="onpvLineClick">
+                                                            <bmobile:simplecol colprop="pvcruiseid">
+                                                            </bmobile:simplecol>
+                                                            <bmobile:simplecol colprop="pvcrstartdate">
+                                                            </bmobile:simplecol>
+                                                            <bmobile:simplecol colprop="pvstartharbor">
+                                                            </bmobile:simplecol>
+                                                            <bmobile:simplecol colprop="pvdestharbor">
+                                                            </bmobile:simplecol>
+                                                        </bmobile:simplerow>
+                                                    </bmobile:simplegrid>
+                                                </bmobile:col>
+                                            </bmobile:row>
+                                        </bmobile:panelbody>
+                                    </bmobile:panel>
+                                </bmobile:col>
+                            </bmobile:row>
+                        </bmobile:panelbody>
+                    </bmobile:panel>
+                </bmobile:col>
+                <bmobile:col styleclasses="col-lg-3 col-md-12 col-sm-12 col-xs-12">
+                    <bmobile:panel style="background-color:#0C3B60;border-style:none">
+                        <bmobile:panelbody>
+                            <bmobile:row style="margin-left:0;margin-right:0;">
+                                <bmobile:col styleclasses="col-lg-12 col-md-3 col-sm-6 col-xs-6">
+                                    <bmobile:panel style="background-color: #125996;border-style:none">
+                                        <bmobile:panelbody>
+                                            <bmobile:row styleclasses="center-block" style="width:100%">
+                                                <div>
+                                                    <bmobile:imageout valueprop="pvimageparos" alt="Paros" style="width:90%;margin-bottom: 10px;padding-top:2%">
+                                    				</bmobile:imageout>
+                                                </div>
+                                            </bmobile:row>
+                                            <bmobile:row>
+                                                <bmobile:flabel styleclasses="center-block" style="color:#c6d9f1;font-style:italic;margin-left:5%;margin-right:5%;text-decoration:underline;font-size: 1.2em" name="ParikiaDevOps">
+                                                </bmobile:flabel>
+                                            </bmobile:row>
+                                            <bmobile:row>
+                                                <bmobile:flabel styleclasses="center-block" style="height:120px;margin-left:5%;margin-right:5%;color:#c6d9f1;font-style:italic;font-size: 1.1em" nameprop="pvislandtxt2">
+                                                </bmobile:flabel>
+                                            </bmobile:row>
+                                        </bmobile:panelbody>
+                                    </bmobile:panel>
+                                </bmobile:col>
+                                <bmobile:col styleclasses="col-lg-12 col-md-3 col-sm-6 col-xs-6">
+                                    <bmobile:panel style="background-color:#125996;border-style:none">
+                                        <bmobile:panelbody>
+                                            <bmobile:row styleclasses="center-block" style="width:100%">
+                                                <div>
+                                                    <bmobile:imageout valueprop="pvimageaghios" alt="Agios Nikolaos" style="width:90%;margin-bottom: 10px;padding-top:2%">
+                                    				</bmobile:imageout>
+                                                </div>
+                                            </bmobile:row>
+                                            <bmobile:row>
+                                            </bmobile:row>
+                                            <bmobile:row>
+                                                <bmobile:flabel styleclasses="center-block" style="color:#c6d9f1;font-style:italic;margin-left:5%;margin-right:5%;text-decoration:underline;font-size: 1.2em" name="Aghios Nikolaos">
+                                                </bmobile:flabel>
+                                            </bmobile:row>
+                                            <bmobile:row>
+                                                <bmobile:flabel styleclasses="center-block" style="height:120px;margin-left:5%;margin-right:5%;color:#c6d9f1;font-style:italic;font-size: 1.1em" nameprop="pvislandtxt1">
+                                                </bmobile:flabel>
+                                            </bmobile:row>
+                                        </bmobile:panelbody>
+                                    </bmobile:panel>
+                                </bmobile:col>
+                                <bmobile:col styleclasses="col-lg-12 col-md-3 col-sm-6 col-xs-6">
+                                    <bmobile:panel style="background-color: #125996;border-style:none">
+                                        <bmobile:panelbody>
+                                            <bmobile:row styleclasses="center-block" style="width:100%">
+                                                <div>
+                                                    <bmobile:imageout valueprop="pvimagelefkas" alt="Lefkas" style="width:90%;margin-bottom: 10px;padding-top:2%">
+                                    				</bmobile:imageout>
+                                                </div>
+                                            </bmobile:row>
+                                            <bmobile:row>
+                                            </bmobile:row>
+                                            <bmobile:row>
+                                                <bmobile:flabel styleclasses="center-block" style="color:#c6d9f1;font-style:italic;margin-left:5%;margin-right:5%;text-decoration:underline;font-size: 1.2em" name="Lefkas">
+                                                </bmobile:flabel>
+                                            </bmobile:row>
+                                            <bmobile:row>
+                                                <bmobile:flabel styleclasses="center-block" style="height:120px;margin-left:5%;margin-right:5%;color:#c6d9f1;font-style:italic;font-size: 1.1em" nameprop="pvislandtxt3">
+                                                </bmobile:flabel>
+                                            </bmobile:row>
+                                        </bmobile:panelbody>
+                                    </bmobile:panel>
+                                </bmobile:col>
+                                <bmobile:col styleclasses="col-lg-12 col-md-3 col-sm-6 col-xs-6">
+                                    <bmobile:panel style="background-color: #125996;border-style:none">
+                                        <bmobile:panelbody>
+                                            <bmobile:row styleclasses="center-block" style="width:100%">
+                                                <div>
+                                                    <bmobile:imageout valueprop="pvimagesantorini" alt="Santorini" style="width:90%;margin-bottom: 10px;padding-top:2%">
+                                    				</bmobile:imageout>
+                                                </div>
+                                            </bmobile:row>
+                                            <bmobile:row>
+                                            </bmobile:row>
+                                            <bmobile:row>
+                                                <bmobile:flabel styleclasses="center-block" style="color:#c6d9f1;font-style:italic;margin-left:5%;margin-right:5%;text-decoration:underline;font-size: 1.2em" name="Thira">
+                                                </bmobile:flabel>
+                                            </bmobile:row>
+                                            <bmobile:row>
+                                                <bmobile:flabel styleclasses="center-block" style="height:120px;margin-left:5%;margin-right:5%;color:#c6d9f1;font-style:italic;font-size: 1.1em" nameprop="pvislandtxt4">
+                                                </bmobile:flabel>
+                                            </bmobile:row>
+                                        </bmobile:panelbody>
+                                    </bmobile:panel>
+                                </bmobile:col>
+                            </bmobile:row>
+                        </bmobile:panelbody>
+                    </bmobile:panel>
+                </bmobile:col>
+            </bmobile:row>
+            <bmobile:row style="background-color:#0C3B60">
+                <bmobile:col styleclasses="col-lg-1 col-md-1 col-sm-2 col-xs-2">
+                    <bmobile:icon iconurl="./images/RD-home2.png" method="onHome" title="Home">
+                    </bmobile:icon>
+                </bmobile:col>
+            </bmobile:row>
+            <bmobile:row style="height:10px;">
+            </bmobile:row>
+        </bmobile:container>
+        <bmobile:container takefullwidth="true">
+            <bmobile:row style="background-color:#323232; height:40px;">
+            </bmobile:row>
+            <bmobile:row style="background-color:#323232;">
+                <bmobile:col styleclasses="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <bmobile:panel style="background-color: #323232; border-color:#6d6d6d; border-style:solid">
+                        <bmobile:panelbody>
+                            <bmobile:row styleclasses="center-block" style="width:100%">
+                                <bmobile:col>
+                                </bmobile:col>
+                            </bmobile:row>
+                            <bmobile:row>
+                                <bmobile:flabel styleclasses="center-block" style="margin-left:3%;margin-right:3%;text-decoration:underline;margin-left=5%;color:#6d6d6d;;font-size: 1em" nameprop="pvaddinfohead1">
+                                </bmobile:flabel>
+                            </bmobile:row>
+                            <bmobile:row>
+                                <bmobile:flabel styleclasses="center-block" style="margin-left:3%;margin-right:3%;color:#6d6d6d;font-size: 1em;height:80px" nameprop="pvaddinfotxt1">
+                                </bmobile:flabel>
+                            </bmobile:row>
+                        </bmobile:panelbody>
+                    </bmobile:panel>
+                </bmobile:col>
+                <bmobile:col styleclasses="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <bmobile:panel style="background-color: #323232;border-color:#6d6d6d; border-style:solid">
+                        <bmobile:panelbody>
+                            <bmobile:row styleclasses="center-block" style="width:100%">
+                                <bmobile:col>
+                                </bmobile:col>
+                            </bmobile:row>
+                            <bmobile:row>
+                                <bmobile:flabel styleclasses="center-block" style="margin-left:3%;margin-right:3%;text-decoration:underline;margin-left=5%;color:#6d6d6d;;font-size: 1em" nameprop="pvaddinfohead2">
+                                </bmobile:flabel>
+                            </bmobile:row>
+                            <bmobile:row>
+                                <bmobile:flabel styleclasses="center-block" style="margin-left:3%;margin-right:3%;color:#6d6d6d;font-size: 1em;height:80px" nameprop="pvaddinfotxt2">
+                                </bmobile:flabel>
+                            </bmobile:row>
+                        </bmobile:panelbody>
+                    </bmobile:panel>
+                </bmobile:col>
+                <bmobile:col styleclasses="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <bmobile:panel style="background-color: #323232;border-color:#6d6d6d; border-style:solid">
+                        <bmobile:panelbody>
+                            <bmobile:row styleclasses="center-block" style="width:100%">
+                                <bmobile:col>
+                                </bmobile:col>
+                            </bmobile:row>
+                            <bmobile:row>
+                                <bmobile:flabel styleclasses="center-block" style="margin-left:3%;margin-right:3%;text-decoration:underline;margin-left=5%;color:#6d6d6d;font-size: 1em" nameprop="pvaddinfohead3">
+                                </bmobile:flabel>
+                            </bmobile:row>
+                            <bmobile:row>
+                                <bmobile:flabel styleclasses="center-block" style="margin-left:3%;margin-right:3%;margin-left=5%;color:#6d6d6d;font-size: 1em;height:80px" nameprop="pvaddinfotxt3">
+                                </bmobile:flabel>
+                            </bmobile:row>
+                        </bmobile:panelbody>
+                    </bmobile:panel>
+                </bmobile:col>
+                <bmobile:col styleclasses="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <bmobile:panel style="background-color: #323232;border-color:#6d6d6d; border-style:solid">
+                        <bmobile:panelbody>
+                            <bmobile:row styleclasses="center-block" style="width:100%">
+                                <bmobile:col>
+                                </bmobile:col>
+                            </bmobile:row>
+                            <bmobile:row>
+                                <bmobile:flabel styleclasses="center-block" style="margin-left:3%;margin-right:3%;text-decoration:underline;margin-left=5%; color:#6d6d6d;;font-size: 1em" nameprop="pvaddinfohead4">
+                                </bmobile:flabel>
+                            </bmobile:row>
+                            <bmobile:row>
+                                <bmobile:flabel styleclasses="center-block" style="margin-left:3%;margin-right:3%;margin-left=5%; color:#6d6d6d;font-size: 1em;height:80px" nameprop="pvaddinfotxt4">
+                                </bmobile:flabel>
+                            </bmobile:row>
+                        </bmobile:panelbody>
+                    </bmobile:panel>
+                </bmobile:col>
+            </bmobile:row>
+            <bmobile:row style="background-color:#323232; height:50px;">
+            </bmobile:row>
+            <bmobile:row style="background-color:#323232; height:20px;">
+                <bmobile:col styleclasses="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding-left:2">
+                    <bmobile:flabel style="color:#6d6d6d;font-style:italic;font-size:8px" name="� demoright - Software AG, 2016">
+                    </bmobile:flabel>
+                </bmobile:col>
+            </bmobile:row>
+            <bmobile:row style="background-color:#0C3B60; height:10px;">
+            </bmobile:row>
+        </bmobile:container>
+    </pagebody>
+</natpage>

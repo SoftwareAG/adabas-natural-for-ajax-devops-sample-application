@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <NaturalProperties>
     <ConnectionProperties>
-        <Hostname>localhost</Hostname>
-        <Portid>0</Portid>
-        <SessionParameters/>
+        <Hostname>adanatvm</Hostname>
+        <Portid>2700</Portid>
+        <SessionParameters>webio=on parm=NDVDEV symgen=ON</SessionParameters>
         <EnvironmentName/>
         <SecurityServer>false</SecurityServer>
+        <SecurityDbId>0</SecurityDbId>
+        <SecurityFnr>0</SecurityFnr>
     </ConnectionProperties>
     <ParserProperties>
         <TerminalCommandChar>%</TerminalCommandChar>
@@ -23,6 +25,7 @@
         <Maxyear>DEFAULT</Maxyear>
         <ParserMode>MAINFRAME_MODE</ParserMode>
         <ParameterCheck>false</ParameterCheck>
+        <Maxprec>7</Maxprec>
         <PageSize>0</PageSize>
         <SpacingFactor>1</SpacingFactor>
         <StructuredMode>true</StructuredMode>
@@ -51,9 +54,9 @@
     </GeneralProperties>
     <EnvironmentProperties>
         <SteplibNSV/>
-        <SteplibExtensions>0;</SteplibExtensions>
+        <SteplibExtensions>1;CRUISE16[-1,-1];</SteplibExtensions>
         <LibrariesSteplibs/>
-        <privateMode>false</privateMode>
+        <privateMode>true</privateMode>
         <Fuser>(0,0)</Fuser>
     </EnvironmentProperties>
     <AivVariables/>
