@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <NaturalProperties>
     <ConnectionProperties>
-        <Hostname>adanatvm</Hostname>
-        <Portid>2700</Portid>
-        <SessionParameters>webio=on parm=NDVDEV symgen=ON</SessionParameters>
+        <Hostname>localhost</Hostname>
+        <Portid>0</Portid>
+        <SessionParameters/>
         <EnvironmentName/>
         <SecurityServer>false</SecurityServer>
         <SecurityDbId>0</SecurityDbId>
