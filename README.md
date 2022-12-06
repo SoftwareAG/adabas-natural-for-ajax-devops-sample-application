@@ -1,8 +1,8 @@
 # adabas-natural-for-ajax-devops-sample-application
-Adabas &amp; Natural for AJAX sample Application for testing DevOps approaches
+Adabas &amp; Natural for AJAX sample application for testing DevOps approaches
 
 # Content
-This repository contains the Sunny Island Cruise sample Application. It is an Adabas based Natural for AJAX Web Application that can be imported to a NaturalONE Development Environment.
+This repository contains the Sunny Island Cruise sample application. It is an Adabas based Natural for AJAX Web-Application that can be imported to a NaturalONE Development Environment.
 
 # Usage
 The suggested way to use this Application is to create you own fork of this Repository and connect your local NaturalONE development environment and a CI/CD Tool of your choice to implement your Team-Development and DevOps process.
