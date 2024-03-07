@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<natpage stylesheetfile="../cis/styles/CIS_WM.css" addstylesheetfile="../HTMLBasedGUI/bootstrap/njxmobiledemo.css" natsource="rdcruisa" natsinglebyte="true" natkcheck="true" xmlns:njx="http://www.softwareag.com/njx/njxMapConverter" xmlns:bmobile="http://www.softwareag.com/njx/njxMobile">
+<natpage uselatestbootstrap="false" natsource="rdcruisa" natsinglebyte="true" natkcheck="true" xmlns:njx="http://www.softwareag.com/njx/njxMapConverter" xmlns:bmobile="http://www.softwareag.com/njx/njxMobile">
     <njx:objects>
     </njx:objects>
     <pagebody pagebodystyle="background-color: #125996">
