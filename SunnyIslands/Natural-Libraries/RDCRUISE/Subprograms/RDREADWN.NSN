@@ -31,8 +31,8 @@ END-DEFINE
 IF P-LANGUAGE GE 10 MOVE P-LANGUAGE TO V-LANGV END-IF
 IF P-LANGUAGE LT 10 COMPRESS '0' P-LANGUAGE TO V-LANGV LEAVING NO END-IF
 *
-* DEFINE WORK FILE 1 'C:\Training\308-66E\resources\CruiseDescriptions.txt'
-DEFINE WORK FILE 1 '/opt/resources/CruiseDescriptions.txt'
+* Change the location of the file where you have imported the application 
+DEFINE WORK FILE 1 'C:\...\adabas-natural-for-ajax-devops-sample-application\SunnyIslands\resources\CruiseDescriptions.txt'
 READ  WORK 1 V-DTYPELANGREC
 *
 

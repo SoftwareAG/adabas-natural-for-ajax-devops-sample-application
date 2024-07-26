@@ -1,0 +1,69 @@
+HDE01 Welcome to "Sunny Island Cruises"$
+HDE01 The islands on the Aegean Sea are some of the most beautiful sailing grounds in the world.& 
+HDE01 With crystal clear seas, a stea dy Meltemi wind and islands just a few hours’ sailing apart,&
+HDE01 there are a huge variety of cultures to meet, history to be learned.&
+HDE01 So you can look forward to the sun and turquoise water, the beautiful nature and secluded beaches.&
+HDE01 Leave everyday life behind and discover secluded bays and small harbors with tavernas on the beach.$
+HDE01 Experience an unforgettable sailing holiday with us ...
+
+HDE02 Willkommen bei "Sunny Island Cruises"$
+HDE02 Die Inseln auf der Ägäis gehören zu den schönsten Segelgebieten der Welt.&
+HDE02 Mit dem kristallklarem Meer, dem Meltemi Wind und Inseln die alle in nur ein paar Stunden zu erreichen sind,&
+HDE02 gibt es eine Vielzahl von Kulturen zu treffen, Geschichte zu lernen.&
+HDE02 Freuen Sie sich also auf Sonne und türkisfarbenes Wasser, auf traumhafte Natur und einsame Strände.&
+HDE02 Lassen Sie den Alltag hinter sich und entdecken Sie Einsame Buchten und kleine Häfen mit Tavernen am Strand.$
+HDE02 Erleben Sie mit uns einen unvergesslichen Segelurlaub ...
+
+HDE04 Bienvenido a "Sunny Island Cruises"$
+HDE04 Las islas del Mar Egeo son algunas de las más bellas zonas de navegación del mundo. 
+HDE04 Con mares cristalinos, un viento de Meltemi y islas a sólo unas pocas horas de navegación aparte,&
+HDE04 hay una gran variedad de culturas para conocer, historia que aprender.&
+HDE04 Así que mirar hacia adelante a sol y aguas turquesa, maravillosas playas solitarias y naturales.&
+HDE04 Olvidarse de los problemas y descubrir solitarias bahías y puertos pequeños con tabernas en la playa.$
+HDE04 Únase a nosotros para unas vacaciones inolvidables ...
+
+HDE11 Bem-vindo ao "Sunny Island Cruises"$ 
+HDE11 As ilhas do Mar Egeu são algumas das mais belas terras de vela do mundo.&
+HDE11 Com mares cristalinos, um vento de Meltemi e ilhas de apenas algumas horas de distância,&
+HDE11 há uma enorme variedade de culturas para conhecer, história a ser aprendida.&
+HDE11 Então olhe para a frente para as águas do sol e da turquesa, maravilhosas praias naturais e isolada.&
+HDE11 Deixe suas preocupações para trás e descobrir baías solitárias e pequenos portos com tavernas na praia.$
+HDE11 Junte-nos para umas férias inesquecíveis ...
+
+
+
+HD101 Choose from our entire range the trip that suits to your dreams               
+HD102 Wählen Sie aus unserem gesamten Angebot die für Sie passende Traumreise
+HD104 Elija entre nuestra gama completa que se adapte a usted viaje de sueño
+HD111 Escolha a partir de toda a nossa gama que combina com você viagem de sonho
+
+HD201 Here we have compiled a selection of very attractive offers for you
+HD202 Hier haben wir für Sie eine Auswahl an attraktiven Angeboten zusammengestellt
+HD204 Hemos recopilado una selección de ofertas atractivas para usted aquí
+HD211 Nós compilamos uma seleção de ofertas atraentes para você aqui
+                                     
+HD301 Here you will find a selection of particularly popular destinations 
+HD302 Hier finden Sie eine Auswahl besonders beliebter Insel Reiseziele 
+HD304 Usted puede encontrar una selección de destinos especialmente populares 
+HD311 Você pode encontrar uma seleção de destinos particularmente populares 
+
+
+IT101 Agios Nikolaos is one of the most beautiful cities of Crete. in the middle there is a lake connected to the sea - surrounded by tavernas and cafes ...            
+IT102 Aghios Nikolaos zählt zu den schönsten Städten Kretas: In der Mitte befindet sich ein mit dem Meer verbundener See, umgeben von Tavernen und Cafes ...              
+IT104 Agios Nikolaos es una de las ciudades más bonitas de Creta. En el centro hay un lago conectado con el mar - rodeado de tabernas y cafés ...            
+IT111 Agios Nikolaos é uma das cidades mais bonitas de Creta. No centro há uma ligada ao mar Lago - cercado por bares e cafés ...         
+
+IT201 Parikia is the capital of the island of Paros. With its white houses, it is situated in a beautiful bay, framed by the mountains in the background ...         
+IT202 Parikia ist die Hauptstadt der Insel Paros. Mit ihren weißen Häusern liegt sie in einer hübschen Bucht, eingerahmt von den Bergen im Hintergrund ...             
+IT204 Parikia y es la capital de la isla de Paros. Con sus casas blancas, se encuentra en una hermosa bahía, enmarcado por las montañas en el fondo ...            
+IT211 Parikia é a capital da ilha de Paros. Com suas casas brancas, ele está em uma baía bonita, emoldurado pelas montanhas ao fundo ...         
+
+IT301 The city of Lefkas offers its visitors a picturesque picture. Narrowly colored houses give the capital of the island a very lively expression ...            
+IT302 Die Stadt Lefkas bietet ihren Besuchern ein malerisches Bild. Eng stehende bunte Häuser verleihen der Inselhauptstadt einen sehr lebhaften Ausdruck ..            
+IT304 Lefkas Town ofrece una imagen pintoresca visitantes. Casas pequeñas y de colores dan la capital una expresión muy viva ... 
+IT311 Lefkas cidade oferece aos visitantes uma imagem pitoresca. Casas pequenas e coloridas dão a capital uma expressão muito viva ...       
+
+IT401 Thira is the capital of the island of Santorini. The view from the town is breathtaking. The Greeks are more proud of hardly any other place ...            
+IT402 Thira ist die Hauptstadt der Insel Santorini. Der Ausblick von der Stadt ist atemberaubend. Auf kaum einen anderen Ort sind die Griechen mehr stolz ..
+IT404 Thira es la capital de la isla de Santorini. La vista de la ciudad es impresionante. En casi ningún otro lugar los griegos son más orgulloso ...     
+IT411 Thira é a capital da Ilha de Santorini. A vista da cidade é de tirar o fôlego. Em quase nenhum outro lugar os gregos são mais orgulhosos ...                                                                                                                                                 
